@@ -154,6 +154,7 @@
         <activity android:name=".view.activity.BusinessPreSaleOilActivity"/>
         <activity android:name=".view.activity.BusinessPreSaleActivity"/>
         <activity android:name=".view.activity.BusinessResetOrderActivity"/>
+        <activity android:name=".view.activity.BusinessSaleMoneyActivity"/>
         <activity android:name=".view.activity.BusinessShareQrcodeActivity"/>
         <activity android:name=".view.activity.BossActivity"/>
         <activity android:name=".view.activity.BossDetailActivity"/>

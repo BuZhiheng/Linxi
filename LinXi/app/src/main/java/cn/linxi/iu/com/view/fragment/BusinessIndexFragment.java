@@ -19,6 +19,7 @@ import cn.linxi.iu.com.adapter.FragmentPagerAdapter;
 import cn.linxi.iu.com.adapter.FragmentPagerChangeListener;
 import cn.linxi.iu.com.model.CommonCode;
 import cn.linxi.iu.com.util.PrefUtil;
+import cn.linxi.iu.com.view.activity.BusinessSaleMoneyActivity;
 import cn.linxi.iu.com.view.activity.LoginControllerActivity;
 
 /**
@@ -74,6 +75,8 @@ public class BusinessIndexFragment extends Fragment implements View.OnClickListe
                 getActivity().finish();
                 break;
             case R.id.tv_business_index_sale:
+                Intent intentSale = new Intent(getContext(), BusinessSaleMoneyActivity.class);
+                startActivity(intentSale);
                 break;
         }
     }
