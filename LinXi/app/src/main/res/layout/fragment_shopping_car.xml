@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/common_title_height"
+            >
+            <LinearLayout
+                android:id="@+id/ll_shoppingcar_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                />
+        </ScrollView>
+        <LinearLayout
+            android:layout_gravity="bottom"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/common_title_height"
+            android:orientation="vertical"
+            >
+            <include layout="@layout/include_div_match"/>
+            <LinearLayout
+                android:gravity="right"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="@dimen/common_margin"
+                    android:gravity="bottom"
+                    android:text="合计:"
+                    />
+                <TextView
+                    android:id="@+id/tv_shoppingcar_money"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="@dimen/common_margin"
+                    android:layout_marginBottom="@dimen/common_margin"
+                    android:gravity="bottom"
+                    android:text="¥ 0"
+                    android:textColor="@color/color_red"
+                    />
+                <TextView
+                    android:id="@+id/tv_shoppingcar_topay"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:background="@color/color_blue"
+                    android:text="结算(0)"
+                    android:textSize="@dimen/text_common_item_title"
+                    android:textColor="@color/color_white"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+    </FrameLayout>
+</LinearLayout>

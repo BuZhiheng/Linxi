@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    >
+    <LinearLayout
+        android:id="@+id/ll_mainfrm_stationitem_model"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/common_margin_little"
+        android:paddingRight="@dimen/common_margin_little"
+        android:paddingTop="@dimen/main_bottom_margintop"
+        android:paddingBottom="@dimen/main_bottom_margintop"
+        android:layout_marginRight="@dimen/common_margin_little"
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:id="@+id/tv_mainfrm_stationitem_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="@dimen/text_common_item_content"
+            android:textColor="@color/color_black_text"
+            />
+        <TextView
+            android:id="@+id/tv_mainfrm_stationitem_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="95#"
+            android:textSize="@dimen/text_common_item_content"
+            android:textColor="@color/color_station_price1"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="元/L"
+            android:textSize="@dimen/text_common_item_content"
+            android:textColor="@color/color_black_text"
+            />
+    </LinearLayout>
+</LinearLayout>

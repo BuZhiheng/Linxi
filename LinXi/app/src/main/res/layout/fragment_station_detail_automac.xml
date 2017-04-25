@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <com.bigkoo.convenientbanner.ConvenientBanner
+        android:id="@+id/banner_automac"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        app:canLoop="true"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        >
+        <LinearLayout
+            android:id="@+id/ll_automac_rv"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            >
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_automac_type"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                />
+        </LinearLayout>
+    </LinearLayout>
+    <include layout="@layout/include_div_matchw10h"/>
+    <include layout="@layout/include_div_match"/>
+    <include layout="@layout/fragment_station_detail_automac_type"/>
+    <include layout="@layout/include_div_match"/>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_automac"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+</LinearLayout>

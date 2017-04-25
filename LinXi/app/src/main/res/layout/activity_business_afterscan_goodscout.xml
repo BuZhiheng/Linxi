@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/common_margin"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        >
+        <TextView
+            android:id="@+id/tv_business_afterscan_name"
+            android:layout_width="0dp"
+            android:layout_weight="5"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="@dimen/text_common_item_title"
+            android:textColor="@color/color_black_text"
+            />
+        <EditText
+            android:id="@+id/et_business_afterscan_auto"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="@dimen/common_title_height39"
+            android:gravity="center"
+            android:inputType="numberDecimal"
+            android:hint="请输入"
+            android:textSize="@dimen/text_common_item_title"
+            android:textColor="@color/color_black_text"
+            />
+    </LinearLayout>
+    <include layout="@layout/include_div_match"/>
+</LinearLayout>

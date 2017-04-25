@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    <SurfaceView
+        android:id="@+id/capture_preview_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+    <cn.linxi.iu.com.zxing.qrcode.FinderView
+        android:id="@+id/capture_viewfinder_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+    <LinearLayout
+        android:id="@+id/ll_qrscan_bounds"
+        android:layout_width="230dp"
+        android:layout_height="230dp"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:background="@drawable/ic_scan_capture"
+        android:visibility="visible"
+        >
+        <ImageView
+            android:id="@+id/iv_qrcode_line"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/common_margin"
+            android:layout_marginRight="@dimen/common_margin"
+            android:src="@drawable/ic_scan_line"
+            />
+    </LinearLayout>
+    <ImageView
+        android:id="@+id/iv_qrcode_back"
+        android:layout_width="@dimen/common_title_height"
+        android:layout_height="@dimen/common_title_height"
+        android:padding="@dimen/common_margin"
+        android:src="@drawable/ic_back"
+        android:onClick="onClick"
+        />
+</FrameLayout>

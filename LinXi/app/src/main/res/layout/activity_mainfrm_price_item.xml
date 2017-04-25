@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_mainfrm_priceitem"
+    android:orientation="vertical"
+    android:layout_width="80dp"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    >
+    <LinearLayout
+        android:id="@+id/ll_buyfrm_priceitem_bg"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:orientation="vertical"
+        android:background="@drawable/ic_buyfrm_pricebg1"
+        android:gravity="center"
+        >
+        <TextView
+            android:id="@+id/tv_mainfrm_priceitem_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="@dimen/text_main_title"
+            android:textColor="@color/color_white"
+            />
+        <TextView
+            android:id="@+id/tv_mainfrm_priceitem_unit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="元/升"
+            android:textSize="@dimen/text_common_item_content"
+            android:textColor="@color/color_white"
+            />
+    </LinearLayout>
+    <TextView
+        android:id="@+id/tv_mainfrm_priceitem_name"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_title_height30"
+        android:gravity="center"
+        android:text="#"
+        android:textSize="@dimen/text_common_item_title"
+        android:textColor="@color/color_black_text"
+        />
+</LinearLayout>

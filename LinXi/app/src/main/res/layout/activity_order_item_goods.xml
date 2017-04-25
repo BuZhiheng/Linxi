@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/common_margin"
+        >
+        <ImageView
+            android:id="@+id/iv_order_goods_item_pic"
+            android:layout_gravity="center_vertical"
+            android:layout_width="@dimen/common_title_height"
+            android:layout_height="@dimen/common_title_height"
+            android:layout_marginLeft="@dimen/common_margin"
+            android:src="@drawable/ic_launcher"
+            />
+        <TextView
+            android:id="@+id/tv_order_goods_item_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="70dp"
+            android:layout_marginRight="100dp"
+            android:text=""
+            android:textSize="@dimen/text_common_item_title"
+            android:textColor="@color/color_black_text"
+            />
+        <TextView
+            android:id="@+id/tv_order_goods_item_num"
+            android:layout_gravity="right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/common_margin_little"
+            android:layout_marginRight="@dimen/common_margin"
+            android:text="x1"
+            android:textSize="@dimen/text_common_item_title"
+            android:textColor="@color/color_black_text"
+            />
+        <LinearLayout
+            android:layout_gravity="right|bottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="@dimen/common_margin_little"
+            android:layout_marginRight="@dimen/common_margin"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="实付 : "
+                />
+            <TextView
+                android:id="@+id/tv_order_goods_item_total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0元"
+                android:textSize="@dimen/text_common_item_title"
+                android:textColor="@color/color_red"
+                />
+        </LinearLayout>
+    </FrameLayout>
+    <include layout="@layout/include_div_match"/>
+</LinearLayout>

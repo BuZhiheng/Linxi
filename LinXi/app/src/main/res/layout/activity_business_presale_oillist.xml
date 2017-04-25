@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="55dp"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    >
+    <ImageView
+        android:layout_width="@dimen/common_margin_large"
+        android:layout_height="match_parent"/>
+    <TextView
+        android:id="@+id/tv_station_oil_name"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:background="@drawable/bg_ll_station_goods_gray"
+        android:text="92#"
+        android:textSize="@dimen/text_common_item_content"
+        android:textColor="@color/color_black_text"
+        />
+</LinearLayout>

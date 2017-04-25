@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_bg"
+    >
+    <include layout="@layout/include_title"/>
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/srl_sign"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_sign"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_margin="@dimen/common_margin"
+                />
+            <Button
+                android:id="@+id/btn_sign"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/common_title_height39"
+                android:layout_margin="@dimen/common_title_height"
+                android:background="@drawable/bg_ll_station_goods_yellow"
+                android:text="签到"
+                android:textSize="@dimen/text_common_item_title"
+                android:textColor="@color/color_white"
+                android:onClick="onClick"
+                />
+        </LinearLayout>
+    </android.support.v4.widget.SwipeRefreshLayout>
+</LinearLayout>

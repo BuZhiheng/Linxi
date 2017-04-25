@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:layout_marginBottom="@dimen/common_margin_little"
+    android:background="@color/color_white"
+    >
+    <TextView
+        android:id="@+id/tv_business_incomeitem_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/common_margin"
+        android:layout_marginLeft="@dimen/common_margin"
+        android:text=""
+        android:textSize="@dimen/text_main_title"
+        android:textColor="@color/color_black_text"
+        />
+    <TextView
+        android:id="@+id/tv_business_incomeitem_amount"
+        android:layout_gravity="right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/common_margin"
+        android:layout_marginRight="@dimen/common_margin"
+        android:text=""
+        android:textSize="@dimen/text_main_title"
+        android:textColor="@color/color_main"
+        />
+    <TextView
+        android:id="@+id/tv_business_incomeitem_time"
+        android:layout_gravity="right|bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/common_margin"
+        android:layout_marginLeft="@dimen/common_margin"
+        android:layout_marginRight="@dimen/common_margin"
+        android:text=""
+        android:textSize="@dimen/text_common_item_title"
+        android:textColor="@color/color_gray_deep"
+        />
+</FrameLayout>

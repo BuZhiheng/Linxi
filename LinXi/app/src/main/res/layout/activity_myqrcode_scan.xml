@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <cn.bingoogolapple.qrcode.zbar.ZBarView
+        android:id="@+id/zbarview"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:qrcv_animTime="1000"
+        app:qrcv_borderColor="@android:color/white"
+        app:qrcv_borderSize="1dp"
+        app:qrcv_cornerColor="@color/color_red"
+        app:qrcv_cornerLength="20dp"
+        app:qrcv_cornerSize="3dp"
+        app:qrcv_isShowDefaultScanLineDrawable="true"
+        app:qrcv_maskColor="#33FFFFFF"
+        app:qrcv_rectWidth="200dp"
+        app:qrcv_scanLineColor="@color/color_red"
+        app:qrcv_topOffset="90dp"/>
+    <ImageView
+        android:id="@+id/iv_mycode_back"
+        android:layout_width="@dimen/common_title_height"
+        android:layout_height="@dimen/common_title_height"
+        android:padding="15dp"
+        android:src="@drawable/ic_login_back"
+        android:onClick="onClick"
+        />
+</FrameLayout>

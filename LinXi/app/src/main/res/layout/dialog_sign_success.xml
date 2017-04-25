@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:background="@drawable/bg_ll_mainfrm_nostroke"
+    android:orientation="vertical" >
+    <TextView
+        android:layout_width="260dp"
+        android:layout_height="@dimen/common_title_height"
+        android:gravity="center"
+        android:background="@drawable/bg_ll_signsuccess_title"
+        android:text="签到奖励"
+        android:textSize="@dimen/text_common_item_title"
+        android:textColor="@color/color_white"
+        />
+    <TextView
+        android:id="@+id/tv_dialog_signsuccess_purchase"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/common_title_height30"
+        android:layout_marginBottom="@dimen/common_title_height30"
+        android:gravity="center"
+        android:text=""
+        android:textSize="@dimen/text_main_title"
+        android:textColor="@color/color_black"
+        />
+    <TextView
+        android:id="@+id/tv_dialog_signsuccess_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text=""
+        android:textSize="@dimen/text_common_item_title"
+        android:textColor="@color/color_black_text"
+        />
+    <Button
+        android:id="@+id/btn_dialog_signsuccess_sure"
+        android:layout_width="100dp"
+        android:layout_height="@dimen/common_title_height39"
+        android:background="@drawable/bg_ll_station_gothere"
+        android:layout_marginTop="@dimen/common_title_height30"
+        android:layout_marginBottom="@dimen/common_title_height30"
+        android:text="确定"
+        android:textSize="@dimen/text_common_item_title"
+        android:textColor="@color/color_main"
+        />
+</LinearLayout>

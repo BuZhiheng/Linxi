@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_bg">
+    <include layout="@layout/include_title"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="60dp"
+        android:layout_marginLeft="@dimen/common_margin"
+        android:layout_marginRight="@dimen/common_margin"
+        android:layout_marginBottom="60dp"
+        android:background="@color/color_white"
+        >
+        <EditText
+            android:id="@+id/et_feedback_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="15dp"
+            android:background="@drawable/bg_ll_mainfrm_price"
+            android:padding="@dimen/common_margin"
+            android:gravity="top"
+            android:hint="在此处输入反馈信息,您的宝贵意见和建议将对我们非常重要。"
+            android:textSize="@dimen/text_common_item_title"
+            android:textColorHint="@color/color_gray_deep"
+            />
+    </LinearLayout>
+    <Button
+        android:id="@+id/btn_feedback_commit"
+        android:layout_gravity="bottom"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_title_height"
+        android:background="@color/color_main"
+        android:text="提交"
+        android:textSize="@dimen/text_common_item_title"
+        android:textColor="@color/color_white"
+        android:onClick="onClick"
+        />
+</FrameLayout>

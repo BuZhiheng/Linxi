@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_bg">
+    <include layout="@layout/include_title"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="60dp"
+        android:layout_marginLeft="@dimen/common_margin"
+        android:layout_marginRight="@dimen/common_margin"
+        android:layout_marginBottom="@dimen/common_margin"
+        android:background="@color/color_white"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        >
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="@dimen/common_title_height"
+            android:src="@drawable/ic_launcher"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_margin="@dimen/common_margin"
+            android:padding="@dimen/common_margin"
+            android:textColorHint="@color/color_gray_deep"
+            android:text="      爱加油是由上海麟兮电子商务有限公司创建的，我们有丰富的电子商务管理服务经验和最先进的互联网技术为用户提供最优质的成品汽油。 麟兮商务一直以来以“诚信”作为公司和每位员工的行为准则，以“超越客户期望”为目标，致力于为消费者提供优质、便宜、快捷、投资的汽油信息服务，为用户打造更好的互联网+油体验。"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/common_margin"
+            android:orientation="vertical"
+            android:gravity="center|bottom"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="使用条款和隐私政策"
+                android:textSize="@dimen/text_common_item_content"
+                android:textColor="@color/color_main"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="沪ICP备16031100号 - 1"
+                android:textSize="@dimen/text_common_item_content"
+                android:textColor="@color/color_gray_deep"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="上海麟兮电子商务有限公司"
+                android:textSize="@dimen/text_common_item_content"
+                android:textColor="@color/color_gray_deep"
+                />
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>
