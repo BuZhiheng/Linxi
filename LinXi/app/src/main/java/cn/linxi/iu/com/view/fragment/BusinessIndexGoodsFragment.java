@@ -10,6 +10,11 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.bigkoo.pickerview.TimePickerView;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -19,6 +24,7 @@ import cn.linxi.iu.com.R;
 import cn.linxi.iu.com.adapter.BusinessIndexAdapter;
 import cn.linxi.iu.com.model.BusinessIndexData;
 import cn.linxi.iu.com.model.BusinessIndexDataItem;
+import cn.linxi.iu.com.model.EventSaleSuccess;
 import cn.linxi.iu.com.presenter.BusinessIndexGoodsFrmPresenter;
 import cn.linxi.iu.com.presenter.ipresenter.IBusinessIndexOilFrmPresenter;
 import cn.linxi.iu.com.util.TimeUtil;
@@ -65,9 +71,14 @@ public class BusinessIndexGoodsFragment extends Fragment implements IBusinessInd
             return view;
         }
         view = inflater.inflate(R.layout.fragment_business_index_goods,container,false);
-        ButterKnife.bind(this,view);
+        ButterKnife.bind(this, view);
         initView();
         return view;
+    }
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        EventBus.getDefault().register(this);
     }
     private void initView() {
         llStart.setOnClickListener(this);
@@ -112,6 +123,7 @@ public class BusinessIndexGoodsFragment extends Fragment implements IBusinessInd
         });
         tvStartWeek.setText(TimeUtil.getWeek(new Date()));
         tvEndWeek.setText(TimeUtil.getWeek(new Date()));
+        presenter.getData(timeStart, timeEnd);
     }
     public void setStime(String stime){
         tvStart.setText(stime);
@@ -133,6 +145,14 @@ public class BusinessIndexGoodsFragment extends Fragment implements IBusinessInd
     @Override
     public void onResume() {
         super.onResume();
+    }
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
+    }
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEvent(EventSaleSuccess success){
         presenter.getData(timeStart,timeEnd);
     }
     @Override

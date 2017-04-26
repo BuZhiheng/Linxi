@@ -4,6 +4,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+
+import org.greenrobot.eventbus.EventBus;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -14,6 +16,7 @@ import cn.linxi.iu.com.model.Automac;
 import cn.linxi.iu.com.model.BaseResult;
 import cn.linxi.iu.com.model.BusinessAfterScanJson;
 import cn.linxi.iu.com.model.CommonCode;
+import cn.linxi.iu.com.model.EventSaleSuccess;
 import cn.linxi.iu.com.model.HttpUrl;
 import cn.linxi.iu.com.model.SaleOilCard;
 import cn.linxi.iu.com.presenter.ipresenter.IBusinessAfterScanPresenter;
@@ -172,6 +175,7 @@ public class BusinessAfterScanPresenter implements IBusinessAfterScanPresenter {
             public void onNext(String s) {
                 BaseResult result = GsonUtil.jsonToObject(s,BaseResult.class);
                 if (result.success()){
+                    EventBus.getDefault().post(new EventSaleSuccess());
                     view.showToast("创建成功");
                     view.orderSuccess();
                 } else {

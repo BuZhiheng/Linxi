@@ -114,6 +114,7 @@ public class BusinessIndexOilFragment extends Fragment implements IBusinessIndex
         });
         tvStartWeek.setText(TimeUtil.getWeek(new Date()));
         tvEndWeek.setText(TimeUtil.getWeek(new Date()));
+        presenter.getData(timeStart,timeEnd);
     }
     public void setStime(String stime){
         tvStart.setText(stime);
@@ -135,7 +136,6 @@ public class BusinessIndexOilFragment extends Fragment implements IBusinessIndex
     @Override
     public void onResume() {
         super.onResume();
-        presenter.getData(timeStart,timeEnd);
     }
     @Override
     public void showToast(String toast) {
