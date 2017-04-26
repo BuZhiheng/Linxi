@@ -4,14 +4,11 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import cn.linxi.iu.com.R;
 import cn.linxi.iu.com.model.Automac;
 import cn.linxi.iu.com.model.BaseResult;
@@ -95,6 +92,9 @@ public class BusinessAfterScanPresenter implements IBusinessAfterScanPresenter {
                             view.showUserBuyNothing();
                         }
                     }
+                } else {
+                    view.showToast(result.error);
+                    view.orderSuccess();
                 }
             }
         });

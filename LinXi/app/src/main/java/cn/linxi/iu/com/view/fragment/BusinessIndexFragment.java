@@ -8,10 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import cn.linxi.iu.com.R;
@@ -21,7 +19,6 @@ import cn.linxi.iu.com.model.CommonCode;
 import cn.linxi.iu.com.util.PrefUtil;
 import cn.linxi.iu.com.view.activity.BusinessSaleMoneyActivity;
 import cn.linxi.iu.com.view.activity.LoginControllerActivity;
-
 /**
  * Created by buzhiheng on 2017/4/13.
  */

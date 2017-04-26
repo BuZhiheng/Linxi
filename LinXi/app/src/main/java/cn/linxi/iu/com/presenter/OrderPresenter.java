@@ -28,6 +28,7 @@ import cn.linxi.iu.com.util.OkHttpUtil;
 import cn.linxi.iu.com.util.PrefUtil;
 import cn.linxi.iu.com.util.StringUtil;
 import cn.linxi.iu.com.util.SystemUtils;
+import cn.linxi.iu.com.util.WindowUtil;
 import cn.linxi.iu.com.view.iview.IOrderView;
 import okhttp3.FormBody;
 import okhttp3.RequestBody;
@@ -294,7 +295,7 @@ public class OrderPresenter implements IOrderPresenter {
     }
     private void setFinalTotal(){
         if (amount > 0){
-            view.setTotalAmount("合计："+amount+"元");
+            view.setTotalAmount("合计："+ WindowUtil.getRoundFloat(amount)+"元");
         } else {
             view.setTotalAmount("合计：0元");
         }

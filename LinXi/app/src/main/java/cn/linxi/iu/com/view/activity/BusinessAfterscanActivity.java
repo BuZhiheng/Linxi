@@ -1,6 +1,5 @@
 package cn.linxi.iu.com.view.activity;
 import android.app.Dialog;
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -19,7 +18,6 @@ import cn.linxi.iu.com.presenter.ipresenter.IBusinessAfterScanPresenter;
 import cn.linxi.iu.com.util.ToastUtil;
 import cn.linxi.iu.com.view.iview.IBusinessAfterScanView;
 import cn.linxi.iu.com.view.widget.BusinessAfterScanSureDialog;
-
 /**
  * Created by buzhiheng on 2017/4/13.
  */
@@ -63,7 +61,6 @@ public class BusinessAfterscanActivity extends AppCompatActivity implements IBus
     @Override
     public void setGoodsList(List<Automac> listGoods) {
         llGoodsContent.setVisibility(View.VISIBLE);
-
         for (int i=0;i<listGoods.size();i++){
             final Automac mac = listGoods.get(i);
             View view = LayoutInflater.from(this).inflate(R.layout.activity_business_afterscan_item, null);

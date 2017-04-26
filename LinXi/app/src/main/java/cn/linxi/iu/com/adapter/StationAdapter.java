@@ -89,24 +89,30 @@ public class StationAdapter extends RecyclerView.Adapter<StationAdapter.MyViewHo
                 holder.ll.addView(view);
             }
         }
-        if (!StringUtil.isNull(station.oil)){
+        if (StringUtil.isNull(station.oil)){
+            holder.llOil.setVisibility(View.GONE);
+        } else {
             holder.llOil.setVisibility(View.VISIBLE);
             holder.tvOil.setText(station.oil);
         }
-        if (!StringUtil.isNull(station.goods)){
+        if (StringUtil.isNull(station.goods)){
+            holder.llLube.setVisibility(View.GONE);
+        } else {
             holder.llLube.setVisibility(View.VISIBLE);
             holder.tvLube.setText(station.goods);
         }
-        if (!StringUtil.isNull(station.wash)){
+        if (StringUtil.isNull(station.wash)){
+            holder.llWash.setVisibility(View.GONE);
+        } else {
             holder.llWash.setVisibility(View.VISIBLE);
             holder.tvWash.setText(station.wash);
         }
         int type = CommonCode.STATION_TYPE_BOTH;
-        if (!StringUtil.isNull(station.oil) && StringUtil.isNull(station.goods)){
+        if ((!StringUtil.isNull(station.oil)) && StringUtil.isNull(station.goods)){
             type = CommonCode.STATION_TYPE_OIL;
-        } else if (StringUtil.isNull(station.oil) && !StringUtil.isNull(station.goods)){
+        } else if (StringUtil.isNull(station.oil) && (!StringUtil.isNull(station.goods))){
             type = CommonCode.STATION_TYPE_GOODS;
-        } else if (!StringUtil.isNull(station.oil) && !StringUtil.isNull(station.goods)){
+        } else if ((!StringUtil.isNull(station.oil)) && (!StringUtil.isNull(station.goods))){
             type = CommonCode.STATION_TYPE_BOTH;
         }
         final int finalType = type;

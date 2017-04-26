@@ -130,13 +130,11 @@ public class BusinessIndexGoodsFragment extends Fragment implements IBusinessInd
                 break;
         }
     }
-
     @Override
     public void onResume() {
         super.onResume();
         presenter.getData(timeStart,timeEnd);
     }
-
     @Override
     public void showToast(String toast) {
         ToastUtil.show(toast);
