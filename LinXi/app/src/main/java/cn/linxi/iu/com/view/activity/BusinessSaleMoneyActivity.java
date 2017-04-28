@@ -3,6 +3,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -33,6 +34,7 @@ public class BusinessSaleMoneyActivity extends AppCompatActivity implements IOil
     @Bind(R.id.ll_business_sale_money_title)
     LinearLayout llTitle;
     private List<Fragment> fragments;
+    private BusinessSaleOilFragment saleOilFragment = new BusinessSaleOilFragment();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,7 +69,7 @@ public class BusinessSaleMoneyActivity extends AppCompatActivity implements IOil
     public void showOilFrm() {
         llTitle.setVisibility(View.GONE);
         fragments = new ArrayList<>();
-        fragments.add(new BusinessSaleOilFragment());
+        fragments.add(saleOilFragment);
         vp.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager(), fragments));
         vp.setCurrentItem(0);
         ((TextView)findViewById(R.id.tv_titlebar_title)).setText("油品");
@@ -81,10 +83,22 @@ public class BusinessSaleMoneyActivity extends AppCompatActivity implements IOil
         vp.setCurrentItem(0);
         ((TextView)findViewById(R.id.tv_titlebar_title)).setText("非油品");
     }
+    public void onProvinceClick(View v){
+        saleOilFragment.onProvinceClick(v);
+    }
+    public void onCarCardClick(View v){
+        saleOilFragment.onCarCardClick(v);
+    }
+    public void onProvinceCancel(View v){
+        saleOilFragment.onProvinceCancel(v);
+    }
+    public void subCarCard(View v){
+        saleOilFragment.subCarCard(v);
+    }
     @Override
     public void showBothFrm() {
         fragments = new ArrayList<>();
-        fragments.add(new BusinessSaleOilFragment());
+        fragments.add(saleOilFragment);
         fragments.add(new BusinessSaleGoodsFragment());
         vp.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager(), fragments));
         vp.setCurrentItem(0);

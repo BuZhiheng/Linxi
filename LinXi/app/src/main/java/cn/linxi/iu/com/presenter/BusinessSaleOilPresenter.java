@@ -1,5 +1,7 @@
 package cn.linxi.iu.com.presenter;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.EditText;
+
 import java.util.List;
 import cn.linxi.iu.com.model.BaseResult;
 import cn.linxi.iu.com.model.CommonCode;
@@ -10,6 +12,7 @@ import cn.linxi.iu.com.presenter.ipresenter.IBusinessSaleOilPresenter;
 import cn.linxi.iu.com.util.GsonUtil;
 import cn.linxi.iu.com.util.OkHttpUtil;
 import cn.linxi.iu.com.util.PrefUtil;
+import cn.linxi.iu.com.util.StringUtil;
 import cn.linxi.iu.com.util.SystemUtils;
 import cn.linxi.iu.com.util.WindowUtil;
 import cn.linxi.iu.com.view.iview.IBusinessSaleOilView;
@@ -54,5 +57,32 @@ public class BusinessSaleOilPresenter implements IBusinessSaleOilPresenter {
                 }
             }
         });
+    }
+
+    @Override
+    public void onCarCardPopClick(EditText etPlate, String s) {
+        if (StringUtil.isNull(s)){
+            return;
+        }
+        String p = etPlate.getText().toString();
+        if (p.length() == 6){
+            view.dismissCardPop();
+            return;
+        }
+        p += s;
+        view.setCardPlate(p);
+        if (p.length() == 6){
+            view.dismissCardPop();
+        }
+    }
+    @Override
+    public void onSubCarCardClick(EditText etPlate) {
+        String p = etPlate.getText().toString();
+        if (StringUtil.isNull(p)){
+            return;
+        }
+        int length = p.length();
+        p = p.substring(0,length-1);
+        view.setCardPlate(p);
     }
 }

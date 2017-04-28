@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_business_sale"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -97,4 +98,11 @@
             android:onClick="onClick"
             />
     </LinearLayout>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_title_height"
+        android:layout_margin="@dimen/common_margin_large"
+        android:background="@drawable/bg_ll_boss_money"
+        android:text="确定"
+        />
 </LinearLayout>

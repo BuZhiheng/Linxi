@@ -14,4 +14,7 @@ public interface IBusinessSaleOilView {
 
     void setOilModel(List<StationOilType> priceList);
 
+    void setCardPlate(String p);
+
+    void dismissCardPop();
 }
