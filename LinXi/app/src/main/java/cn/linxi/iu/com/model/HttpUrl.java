@@ -9,7 +9,7 @@ public class HttpUrl {//http://wap.kylinoil.com/app/views/vip-description.html
     public static final String devBaseUrl = "http://dev-api.kylinoil.com";
     public static final String testBaseUrl = "http://test-api.kylinoil.com";
     public static final String realBaseUrl = "http://api.kylinoil.com";
-    public static final String finalUrl = realBaseUrl;
+    public static final String finalUrl = devBaseUrl;
     //短信验证码 post
     public static final String getCodeUrl = finalUrl + "/message/code/send";
     //验证验证码 post
@@ -89,7 +89,7 @@ public class HttpUrl {//http://wap.kylinoil.com/app/views/vip-description.html
     //卖油
     public static final String saleOilCardUrl = finalUrl + "/oil/sale/confirm";
     //我的油卡
-    public static final String getMyOilCardUrl = finalUrl + "/oil/sale/mycard";
+    public static final String getMyOilCardUrl = finalUrl + "/member/card/index";
     //支付宝支付
     public static final String payByAli = finalUrl + "/pay/alipay";
     //微信支付

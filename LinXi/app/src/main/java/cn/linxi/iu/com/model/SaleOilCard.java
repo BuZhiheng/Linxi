@@ -1,4 +1,6 @@
 package cn.linxi.iu.com.model;
+import com.google.gson.JsonElement;
+
 import java.io.Serializable;
 /**
  * Created by buzhiheng on 2016/8/25.
@@ -13,8 +15,10 @@ public class SaleOilCard implements Serializable{
     public String oil_type;
     public String name;
     public String avatar;
+    public String address;
     public Double longitude;
     public Double latitude;
     public Float balance;
     public String type;
+    public JsonElement list;
 }

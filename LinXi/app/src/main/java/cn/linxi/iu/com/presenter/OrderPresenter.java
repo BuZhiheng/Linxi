@@ -223,7 +223,7 @@ public class OrderPresenter implements IOrderPresenter {
                 .add("user_id", userId)
                 .add("pay_password", psd)
                 .add("oid", order.oid)
-                .add("balance",0-amount+"")
+                .add("balance",order.balance_use)
                 .add("json",json)
                 .build();
         OkHttpUtil.post(HttpUrl.payByBalance, body, new Subscriber<String>() {

@@ -64,6 +64,50 @@
                     android:textColor="@color/color_white"
                     />
             </FrameLayout>
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="@dimen/common_margin"
+                android:background="@color/color_white"
+                >
+                <LinearLayout
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="150dp"
+                    android:layout_height="60dp"
+                    android:background="@drawable/bg_ll_mainfrm_price"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="选择油品"
+                        android:textSize="@dimen/text_common_item_title"
+                        android:textColor="@color/color_main"
+                        android:textStyle="bold"
+                        />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/common_title_height"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        android:background="@drawable/bg_ll_personalmsg_logout"
+                        android:text="@string/app_name"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/app_name"
+                        />
+                </LinearLayout>
+            </FrameLayout>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

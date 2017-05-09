@@ -3,90 +3,95 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/ll_myoilcard_item"
     android:layout_width="match_parent"
-    android:layout_height="119dp"
+    android:layout_height="wrap_content"
     android:layout_marginBottom="@dimen/common_margin_little"
-    android:orientation="horizontal"
-    android:gravity="center_vertical"
+    android:orientation="vertical"
     android:background="@color/color_white"
     >
-    <ImageView
-        android:id="@+id/iv_myoilcard_photo"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginLeft="@dimen/common_margin"
-        android:src="@drawable/ic_minefrm_userdefault"
-        />
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="10dp"
-        android:orientation="vertical"
-        android:gravity="center"
+        android:layout_height="100dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
         >
-        <FrameLayout
-            android:layout_width="match_parent"
+        <ImageView
+            android:id="@+id/iv_myoilcard_photo"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="@dimen/common_margin"
+            android:src="@drawable/ic_minefrm_userdefault"
+            />
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/common_margin_large"
+            android:layout_marginLeft="@dimen/common_margin"
+            android:orientation="vertical"
+            android:gravity="center_vertical"
             >
             <TextView
                 android:id="@+id/tv_myoilcard_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
+                android:text="上海加油站"
                 android:textSize="@dimen/text_common_item_title"
                 android:textColor="@color/color_black_text"
                 />
             <TextView
-                android:layout_gravity="right"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginRight="@dimen/common_margin"
-                android:gravity="bottom"
-                android:text="剩余油量"
-                android:textSize="@dimen/text_common_item_title"
-                android:textColor="@color/color_black_text"
-                />
-        </FrameLayout>
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/common_margin_little"
-            >
-            <TextView
-                android:id="@+id/tv_myoilcard_notice"
+                android:id="@+id/tv_myoilcard_address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:textSize="@dimen/text_common_item_content"
+                android:layout_marginTop="@dimen/common_margin"
+                android:text="徐汇区虹桥路"
+                android:textSize="@dimen/text_common_item_title"
                 android:textColor="@color/color_gray_deep"
                 />
-            <TextView
-                android:id="@+id/tv_myoilcard_purchase"
-                android:layout_gravity="right"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="@dimen/common_margin"
-                android:text=""
-                android:textSize="@dimen/text_common_item_title"
-                android:textColor="@color/color_black_text"
-                />
-        </FrameLayout>
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/common_margin_little"
-            >
-            <Button
-                android:id="@+id/btn_myoilcard_gothere"
-                android:layout_gravity="right"
-                android:layout_width="70dp"
-                android:layout_height="25dp"
-                android:layout_marginRight="@dimen/common_margin"
-                android:background="@drawable/bg_ll_station_gothere"
-                android:text="我要去这"
-                android:textSize="@dimen/text_common_item_content"
-                android:textColor="@color/color_main"
-                />
-        </FrameLayout>
+        </LinearLayout>
     </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="油品型号"
+            android:textSize="@dimen/text_common_item_title"
+            android:textColor="@color/color_black_text"
+            />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="剩余油量"
+            android:textSize="@dimen/text_common_item_title"
+            android:textColor="@color/color_black_text"
+            />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="转让"
+            android:textSize="@dimen/text_common_item_title"
+            android:textColor="@color/color_black_text"
+            />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="锁定油量"
+            android:textSize="@dimen/text_common_item_title"
+            android:textColor="@color/color_black_text"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/ll_myoilcard_item_transfer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        />
 </LinearLayout>
