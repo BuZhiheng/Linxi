@@ -80,7 +80,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/main_bottom_margintop"
-                android:text="卖油"
+                android:text="转让"
                 android:textSize="@dimen/main_bottom_text"
                 android:textColor="@color/color_black_text"
                 />

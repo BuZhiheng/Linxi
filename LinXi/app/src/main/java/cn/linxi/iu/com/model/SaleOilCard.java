@@ -21,4 +21,5 @@ public class SaleOilCard implements Serializable{
     public Float balance;
     public String type;
     public JsonElement list;
+    public JsonElement item;
 }

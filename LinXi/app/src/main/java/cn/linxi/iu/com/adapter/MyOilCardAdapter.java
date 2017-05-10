@@ -72,7 +72,6 @@ public class MyOilCardAdapter extends RecyclerView.Adapter<MyOilCardAdapter.MyVi
             llTransfer.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    ToastUtil.show(item.card_id);
                     Intent intent = new Intent(context, TransferSaleActivity.class);
                     intent.putExtra(CommonCode.INTENT_ORDER_ID,item.card_id);
                     context.startActivity(intent);

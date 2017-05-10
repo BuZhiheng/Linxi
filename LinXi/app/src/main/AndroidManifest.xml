@@ -215,7 +215,9 @@
         <activity android:name=".view.activity.SignActivity"/>
         <activity android:name=".view.activity.StationDetailActivity"/>
         <activity android:name=".view.activity.TransferActivity"/>
-        <activity android:name=".view.activity.TransferSaleActivity"/>
+        <activity android:name=".view.activity.TransferSaleActivity"
+                  android:windowSoftInputMode="adjustPan|stateHidden"
+            />
         <activity android:name=".view.activity.VipCenterActivity"/>
         <activity android:name=".view.activity.WaitForOpenActivity"/>
         <activity android:name=".view.activity.WebViewActivity"/>

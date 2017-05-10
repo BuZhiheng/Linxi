@@ -41,9 +41,8 @@ import cn.linxi.iu.com.util.PrefUtil;
 import cn.linxi.iu.com.util.ToastUtil;
 import cn.linxi.iu.com.view.fragment.BuyFragment;
 import cn.linxi.iu.com.view.fragment.MineFragment;
-//import cn.linxi.iu.com.view.fragment.SaleFragment;
-import cn.linxi.iu.com.view.fragment.SaleFragment;
 import cn.linxi.iu.com.view.fragment.ShowCodeFragment;
+import cn.linxi.iu.com.view.fragment.TransferMarketFragment;
 import cn.linxi.iu.com.view.iview.IMainView;
 import cn.linxi.iu.com.view.iview.ITIMView;
 import cn.linxi.iu.com.view.iview.IUpdateView;
@@ -78,7 +77,7 @@ public class MainActivity extends AppCompatActivity implements IMainView,ITIMVie
     private List<Fragment> fragments;
     private BuyFragment buyFragment = new BuyFragment();
     private ShowCodeFragment codeFragment = new ShowCodeFragment();
-    private SaleFragment saleFragment = new SaleFragment();
+    private TransferMarketFragment transferFragment = new TransferMarketFragment();
     private MineFragment mineFragment = new MineFragment();
     private boolean canExit = false;
     @Override
@@ -99,7 +98,7 @@ public class MainActivity extends AppCompatActivity implements IMainView,ITIMVie
         fragments = new ArrayList<>();
         fragments.add(buyFragment);
         fragments.add(codeFragment);
-        fragments.add(saleFragment);
+        fragments.add(transferFragment);
         fragments.add(mineFragment);
         fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
@@ -261,9 +260,6 @@ public class MainActivity extends AppCompatActivity implements IMainView,ITIMVie
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         switch (resultCode){
-//            case CommonCode.ACTIVITY_RESULT_CODE_SALE:
-//                saleFragment.onRefresh();
-//                break;
             case CommonCode.ACTIVITY_RESULT_CODE_BUY:
                 if (data != null && data.getSerializableExtra(CommonCode.INTENT_REGISTER_USER) != null){
                     SelectCity city = (SelectCity) data.getSerializableExtra(CommonCode.INTENT_REGISTER_USER);

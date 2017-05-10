@@ -6,6 +6,7 @@ android {
     aaptOptions.useNewCruncher = false
     useLibrary 'org.apache.http.legacy'
     defaultConfig {
+        multiDexEnabled true
         applicationId "cn.linxi.iu.com"
         minSdkVersion 14
         targetSdkVersion 23
