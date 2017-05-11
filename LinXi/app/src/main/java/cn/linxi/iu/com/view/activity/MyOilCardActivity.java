@@ -5,6 +5,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -21,11 +22,13 @@ import cn.linxi.iu.com.presenter.ipresenter.IMyOilCardPresenter;
 import cn.linxi.iu.com.util.ToastUtil;
 import cn.linxi.iu.com.view.iview.IMyOilCardView;
 import cn.linxi.iu.com.view.widget.OnRvScrollListener;
+import cn.linxi.iu.com.view.widget.TransferDetailPopupWindow;
+
 /**
  * Created by buzhiheng on 2016/8/4.
  * Desc 我的油卡页面
  */
-public class MyOilCardActivity extends AppCompatActivity implements IMyOilCardView {
+public class MyOilCardActivity extends AppCompatActivity implements IMyOilCardView, View.OnClickListener {
     private IMyOilCardPresenter presenter;
     @Bind(R.id.rv_myoilcard)
     RecyclerView rvCard;
@@ -33,8 +36,11 @@ public class MyOilCardActivity extends AppCompatActivity implements IMyOilCardVi
     SwipeRefreshLayout refresh;
     @Bind(R.id.ll_include_nodata)
     LinearLayout llNodata;
+    @Bind(R.id.tv_titlebar_right)
+    TextView tvRight;
     private MyOilCardAdapter adapter;
     private int page = 1;
+    private TransferDetailPopupWindow popupWindow;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,11 +90,13 @@ public class MyOilCardActivity extends AppCompatActivity implements IMyOilCardVi
                 finish();
                 break;
             case R.id.tv_titlebar_right:
-                Intent intent = new Intent(this,OilDetailActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent(this,OilDetailActivity.class);
+//                startActivity(intent);
+                popupWindow = new TransferDetailPopupWindow(this,this);
+                popupWindow.showAtLocation(tvRight, Gravity.NO_GRAVITY, -100, 100);
+                break;
         }
     }
-
     @Override
     public void showToast(String toast) {
         refresh.setRefreshing(false);

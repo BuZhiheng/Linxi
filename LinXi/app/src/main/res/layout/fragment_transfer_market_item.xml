@@ -22,7 +22,7 @@
             android:src="@drawable/ic_minefrm_userdefault"
             />
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="180dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/common_margin"
             android:orientation="vertical"
@@ -41,9 +41,26 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/common_margin"
+                android:layout_marginRight="@dimen/common_margin_large"
                 android:text="徐汇区虹桥路"
-                android:textSize="@dimen/text_common_item_title"
-                android:textColor="@color/color_gray_deep"
+                android:textSize="@dimen/text_common_item_content"
+                android:textColor="@color/color_black_text"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            >
+            <Button
+                android:id="@+id/btn_transfer_market_enter"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/common_title_height30"
+                android:background="@drawable/bg_ll_boss_money"
+                android:text="进入看看"
+                android:textSize="@dimen/text_common_item_content"
+                android:textColor="@color/color_white"
                 />
         </LinearLayout>
     </LinearLayout>
@@ -74,16 +91,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="转让"
-            android:textSize="@dimen/text_common_item_title"
-            android:textColor="@color/color_black_text"
-            />
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="锁定油量"
+            android:text="转让价格"
             android:textSize="@dimen/text_common_item_title"
             android:textColor="@color/color_black_text"
             />

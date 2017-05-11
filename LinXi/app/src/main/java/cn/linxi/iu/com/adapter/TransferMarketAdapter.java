@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -12,12 +13,11 @@ import org.xutils.x;
 import java.util.ArrayList;
 import java.util.List;
 import cn.linxi.iu.com.R;
-import cn.linxi.iu.com.model.CommonCode;
-import cn.linxi.iu.com.model.MyOilCardItem;
 import cn.linxi.iu.com.model.SaleOilCard;
+import cn.linxi.iu.com.model.StationOilType;
 import cn.linxi.iu.com.util.BitmapUtil;
 import cn.linxi.iu.com.util.GsonUtil;
-import cn.linxi.iu.com.view.activity.TransferSaleActivity;
+import cn.linxi.iu.com.view.activity.TransferActivity;
 /**
  * Created by BuZhiheng on 2016/3/31.
  */
@@ -50,29 +50,27 @@ public class TransferMarketAdapter extends RecyclerView.Adapter<TransferMarketAd
         holder.tvAddresss.setText(card.address);
         x.image().bind(holder.photo, card.avatar, BitmapUtil.getOptionCommon());
 
-        List<MyOilCardItem> list = GsonUtil.jsonToList(card.list,MyOilCardItem.class);
+        List<StationOilType> list = GsonUtil.jsonToList(card.item,StationOilType.class);
         holder.llTransfer.removeAllViews();
         for (int i=0;i<list.size();i++){
-            View view = LayoutInflater.from(context).inflate(R.layout.activity_myoilcard_item_transfer,null);
-            TextView tvType = (TextView) view.findViewById(R.id.tv_myoilcard_type);
-            TextView tvPurchase = (TextView) view.findViewById(R.id.tv_myoilcard_purchase);
-            LinearLayout llTransfer = (LinearLayout) view.findViewById(R.id.ll_myoilcard_transfer);
-            TextView tvLock = (TextView) view.findViewById(R.id.tv_myoilcard_lock);
+            View view = LayoutInflater.from(context).inflate(R.layout.activity_transfer_market_item,null);
+            TextView tvType = (TextView) view.findViewById(R.id.tv_market_item_type);
+            TextView tvPurchase = (TextView) view.findViewById(R.id.tv_market_item_purchase);
+            TextView tvPrice = (TextView) view.findViewById(R.id.tv_market_item_price);
 
-            final MyOilCardItem item = list.get(i);
+            final StationOilType item = list.get(i);
             tvType.setText(item.oil_type);
             tvPurchase.setText(item.purchase);
-            tvLock.setText(item.sale_purchase);
-            llTransfer.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(context, TransferSaleActivity.class);
-                    intent.putExtra(CommonCode.INTENT_ORDER_ID,item.card_id);
-                    context.startActivity(intent);
-                }
-            });
+            tvPrice.setText(item.price);
             holder.llTransfer.addView(view);
         }
+        holder.button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, TransferActivity.class);
+                context.startActivity(intent);
+            }
+        });
     }
     @Override
     public int getItemCount() {
@@ -84,6 +82,7 @@ public class TransferMarketAdapter extends RecyclerView.Adapter<TransferMarketAd
         ImageView photo;
         TextView tvName;
         TextView tvAddresss;
+        Button button;
         public MyViewHolder(View view) {
             super(view);
             ll = (LinearLayout) view.findViewById(R.id.ll_transfer_market_item);
@@ -91,6 +90,7 @@ public class TransferMarketAdapter extends RecyclerView.Adapter<TransferMarketAd
             photo = (ImageView) view.findViewById(R.id.iv_transfer_market_photo);
             tvName = (TextView) view.findViewById(R.id.tv_transfer_market_name);
             tvAddresss = (TextView) view.findViewById(R.id.tv_transfer_market_address);
+            button = (Button) view.findViewById(R.id.btn_transfer_market_enter);
         }
     }
 }

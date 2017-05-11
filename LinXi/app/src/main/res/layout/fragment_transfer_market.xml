@@ -14,7 +14,7 @@
             android:layout_gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="转让"
+            android:text="转让市场"
             android:textSize="@dimen/text_main_title"
             android:textColor="@color/color_white"
             />

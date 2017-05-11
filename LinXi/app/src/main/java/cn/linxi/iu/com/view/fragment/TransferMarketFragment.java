@@ -7,9 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import java.util.List;
-
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import cn.linxi.iu.com.R;
@@ -47,6 +45,7 @@ public class TransferMarketFragment extends Fragment implements ITransferMarketV
         refresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
+                presenter.getData();
             }
         });
         presenter.getData();
@@ -59,11 +58,13 @@ public class TransferMarketFragment extends Fragment implements ITransferMarketV
     @Override
     public void showToast(String toast) {
         ToastUtil.show(toast);
+        refresh.setRefreshing(false);
     }
 
     @Override
     public void setTransferMarket(List<SaleOilCard> list) {
         adapter.setData(list);
         adapter.notifyDataSetChanged();
+        refresh.setRefreshing(false);
     }
 }

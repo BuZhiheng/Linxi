@@ -5,7 +5,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -19,8 +18,6 @@ import cn.linxi.iu.com.model.MyOilCardItem;
 import cn.linxi.iu.com.model.SaleOilCard;
 import cn.linxi.iu.com.util.BitmapUtil;
 import cn.linxi.iu.com.util.GsonUtil;
-import cn.linxi.iu.com.util.NAVIUtil;
-import cn.linxi.iu.com.util.ToastUtil;
 import cn.linxi.iu.com.view.activity.TransferSaleActivity;
 
 /**
