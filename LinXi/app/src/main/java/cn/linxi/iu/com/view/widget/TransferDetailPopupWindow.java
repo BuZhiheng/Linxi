@@ -1,4 +1,5 @@
 package cn.linxi.iu.com.view.widget;
+import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
@@ -14,8 +15,8 @@ import cn.linxi.iu.com.R;
  * Created by BuZhiheng on 2016/5/16.
  */
 public class TransferDetailPopupWindow extends PopupWindow {
-    private AppCompatActivity context;
     private View view;
+    private AppCompatActivity context;
     private TextView tv1;
     private TextView tv2;
     public TransferDetailPopupWindow(AppCompatActivity context, View.OnClickListener listener){
@@ -27,33 +28,20 @@ public class TransferDetailPopupWindow extends PopupWindow {
         tv1.setOnClickListener(listener);
         tv2.setOnClickListener(listener);
         //设置SelectPicPopupWindow的View
-        setBackgroundDrawable(new ColorDrawable(Color.parseColor("#F8F8F8")));
-        // TODO: 2016/5/17 设置可以获取焦点
+        setContentView(view);
+        setWidth(500);
+        setHeight(300);
+        ColorDrawable cd = new ColorDrawable(0x000000);
+        setBackgroundDrawable(cd);
         setFocusable(true);
+        setAnimationStyle(R.style.PopwinTheme);
         // TODO: 2016/5/17 设置可以触摸弹出框以外的区域
         setOutsideTouchable(true);
-        // TODO：更新popupwindow的状态
-        update();
-        setAnimationStyle(R.style.PopwinTheme);
-//        view.setOnTouchListener(new View.OnTouchListener() {
-//            public boolean onTouch(View v, MotionEvent event) {
-//                int height = view.findViewById(R.id.ll_dialog_popwin_transfer).getTop();
-//                int y = (int) event.getY();
-//                if (event.getAction() == MotionEvent.ACTION_UP) {
-//                    if (y < height) {
-//                        dismiss();
-//                    }
-//                }
-//                return true;
-//            }
-//        });
-    }
-    @Override
-    public void showAtLocation(View parent, int gravity, int x, int y) {
-        super.showAtLocation(parent, gravity, x, y);
         WindowManager.LayoutParams lp = context.getWindow().getAttributes();
         lp.alpha = 0.4f;
         context.getWindow().setAttributes(lp);
+        // TODO：更新popupwindow的状态
+        update();
     }
     @Override
     public void dismiss() {

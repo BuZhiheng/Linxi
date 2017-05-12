@@ -13,4 +13,5 @@ public class StationOilType implements Serializable{
     public String price;
     public String type;//1汽油,2液化气
     public String purchase;//加油站预加油输入油量
+    public String max_purchase;
 }

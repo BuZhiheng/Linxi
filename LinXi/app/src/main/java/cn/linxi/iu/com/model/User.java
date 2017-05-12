@@ -1,5 +1,8 @@
 package cn.linxi.iu.com.model;
 import java.io.Serializable;
+
+import cn.linxi.iu.com.util.PrefUtil;
+
 /**
  * Created by buzhiheng on 2016/8/17.
  *
@@ -32,4 +35,14 @@ public class User implements Serializable{
     public String share_url;
     public String share_title;
     public String share_desc;
+
+    public static String getUserId(){
+        return PrefUtil.getInt(CommonCode.SP_USER_USERID,0)+"";
+    }
+    public static boolean isLogin(){
+        if (PrefUtil.getInt(CommonCode.SP_USER_USERID,0) > 0){
+            return true;
+        }
+        return false;
+    }
 }

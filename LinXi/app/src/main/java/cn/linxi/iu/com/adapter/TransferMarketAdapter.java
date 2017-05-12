@@ -13,11 +13,14 @@ import org.xutils.x;
 import java.util.ArrayList;
 import java.util.List;
 import cn.linxi.iu.com.R;
+import cn.linxi.iu.com.model.CommonCode;
 import cn.linxi.iu.com.model.SaleOilCard;
 import cn.linxi.iu.com.model.StationOilType;
+import cn.linxi.iu.com.model.User;
 import cn.linxi.iu.com.util.BitmapUtil;
 import cn.linxi.iu.com.util.GsonUtil;
-import cn.linxi.iu.com.view.activity.TransferActivity;
+import cn.linxi.iu.com.view.activity.LoginActivity;
+import cn.linxi.iu.com.view.activity.TransferBuyActivity;
 /**
  * Created by BuZhiheng on 2016/3/31.
  */
@@ -67,8 +70,14 @@ public class TransferMarketAdapter extends RecyclerView.Adapter<TransferMarketAd
         holder.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, TransferActivity.class);
-                context.startActivity(intent);
+                if (User.isLogin()){
+                    Intent intent = new Intent(context, TransferBuyActivity.class);
+                    intent.putExtra(CommonCode.INTENT_STATION_ID,card.station_id);
+                    context.startActivity(intent);
+                } else {
+                    Intent intent = new Intent(context, LoginActivity.class);
+                    context.startActivity(intent);
+                }
             }
         });
     }

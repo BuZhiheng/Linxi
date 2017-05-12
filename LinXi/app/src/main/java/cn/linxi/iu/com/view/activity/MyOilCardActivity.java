@@ -5,7 +5,6 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -23,7 +22,6 @@ import cn.linxi.iu.com.util.ToastUtil;
 import cn.linxi.iu.com.view.iview.IMyOilCardView;
 import cn.linxi.iu.com.view.widget.OnRvScrollListener;
 import cn.linxi.iu.com.view.widget.TransferDetailPopupWindow;
-
 /**
  * Created by buzhiheng on 2016/8/4.
  * Desc 我的油卡页面
@@ -90,10 +88,16 @@ public class MyOilCardActivity extends AppCompatActivity implements IMyOilCardVi
                 finish();
                 break;
             case R.id.tv_titlebar_right:
-//                Intent intent = new Intent(this,OilDetailActivity.class);
-//                startActivity(intent);
                 popupWindow = new TransferDetailPopupWindow(this,this);
-                popupWindow.showAtLocation(tvRight, Gravity.NO_GRAVITY, -100, 100);
+                popupWindow.showAsDropDown(tvRight, 0, 0);
+                break;
+            case R.id.tv_dialog_popwin_transfer:
+                popupWindow.dismiss();
+                break;
+            case R.id.tv_dialog_popwin_transfer_oil:
+                Intent intent = new Intent(this,OilDetailActivity.class);
+                startActivity(intent);
+                popupWindow.dismiss();
                 break;
         }
     }
@@ -114,7 +118,6 @@ public class MyOilCardActivity extends AppCompatActivity implements IMyOilCardVi
         adapter.notifyDataSetChanged();
         refresh.setRefreshing(false);
     }
-
     @Override
     public void setNoData() {
         refresh.setRefreshing(false);

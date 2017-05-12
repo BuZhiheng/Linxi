@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * Created by buzhiheng on 2016/8/25.
  *
- * Desc 卖油item,我的油卡item
+ * Desc 卖油item,我的油卡item,转让市场,转让市场详情 model
  */
 public class SaleOilCard implements Serializable{
     public Integer id;
@@ -22,4 +22,5 @@ public class SaleOilCard implements Serializable{
     public String type;
     public JsonElement list;
     public JsonElement item;
+    public JsonElement tags;
 }
