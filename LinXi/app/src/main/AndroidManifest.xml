@@ -214,7 +214,9 @@
             />
         <activity android:name=".view.activity.SignActivity"/>
         <activity android:name=".view.activity.StationDetailActivity"/>
-        <activity android:name=".view.activity.TransferBuyActivity"/>
+        <activity android:name=".view.activity.TransferBuyActivity"
+                  android:windowSoftInputMode="adjustPan|stateHidden"
+            />
         <activity android:name=".view.activity.TransferSaleActivity"
                   android:windowSoftInputMode="adjustPan|stateHidden"
             />

@@ -2,6 +2,8 @@ package cn.linxi.iu.com.view.activity;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
@@ -12,8 +14,10 @@ import org.xutils.x;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import cn.linxi.iu.com.R;
+import cn.linxi.iu.com.model.Order;
 import cn.linxi.iu.com.model.SaleOilCard;
 import cn.linxi.iu.com.model.StationOilType;
+import cn.linxi.iu.com.model.TransferBuyCaculate;
 import cn.linxi.iu.com.presenter.TransferBuyPresenter;
 import cn.linxi.iu.com.presenter.ipresenter.ITransferBuyPresenter;
 import cn.linxi.iu.com.util.ToastUtil;
@@ -29,6 +33,14 @@ public class TransferBuyActivity extends AppCompatActivity implements ITransferB
     TextView tvAddress;
     @Bind(R.id.tv_transfer_market_max)
     TextView tvMax;
+    @Bind(R.id.tv_transfer_market_should_pay)
+    TextView tvShouldPay;
+    @Bind(R.id.tv_transfer_market_final_pay)
+    TextView tvFinalPay;
+    @Bind(R.id.tv_transfer_market_price)
+    TextView tvPrice;
+    @Bind(R.id.tv_transfer_market_save)
+    TextView tvSave;
     @Bind(R.id.iv_transfer_market_photo)
     ImageView photo;
     @Bind(R.id.et_transfer_market_cout)
@@ -48,6 +60,18 @@ public class TransferBuyActivity extends AppCompatActivity implements ITransferB
         ((TextView)findViewById(R.id.tv_titlebar_title)).setText("转让市场");
         ((ImageView)findViewById(R.id.iv_titlebar_right)).setImageResource(R.drawable.ic_shopping_car);
         presenter.getData();
+        editText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                presenter.getTransferMoney(editText,selecedPrice);
+            }
+        });
     }
     @Override
     public void showToast(String toast) {
@@ -72,6 +96,7 @@ public class TransferBuyActivity extends AppCompatActivity implements ITransferB
                 //code 设置当前选中的price
                 selecedPrice = stationOilType;
                 tvMax.setText("最多"+selecedPrice.max_purchase+"L");
+                presenter.getTransferMoney(editText,selecedPrice);
             }
         });
         if (i == 0){
@@ -79,8 +104,20 @@ public class TransferBuyActivity extends AppCompatActivity implements ITransferB
             tv.setBackgroundResource(R.drawable.bg_ll_station_goods_yellow);
             selecedPrice = stationOilType;
             tvMax.setText("最多"+selecedPrice.max_purchase+"L");
+            presenter.getTransferMoney(editText,selecedPrice);
         }
         layout.addView(view);
+    }
+    @Override
+    public void setCaculate(TransferBuyCaculate caculate) {
+        tvShouldPay.setText(caculate.station_amount);
+        tvPrice.setText(caculate.price);
+        tvSave.setText(caculate.saving_amount);
+        tvFinalPay.setText(caculate.amount);
+    }
+    @Override
+    public void orderSuccess(Order order) {
+        showToast(order.oid);
     }
     private void initOilModelList(int curr) {
         int count = layout.getChildCount();
@@ -103,10 +140,15 @@ public class TransferBuyActivity extends AppCompatActivity implements ITransferB
                 finish();
                 break;
             case R.id.iv_transfer_market_cout_add:
-                editText.setText(presenter.onCoutAdd(editText));
+                editText.setText(presenter.onCoutAdd(editText,selecedPrice));
                 break;
             case R.id.iv_transfer_market_cout_sub:
-                editText.setText(presenter.onCoutSub(editText));
+                editText.setText(presenter.onCoutSub(editText,selecedPrice));
+                break;
+            case R.id.btn_transfer_buy_gothere:
+                break;
+            case R.id.btn_transfer_market_buy:
+                presenter.order(editText,selecedPrice);
                 break;
         }
     }

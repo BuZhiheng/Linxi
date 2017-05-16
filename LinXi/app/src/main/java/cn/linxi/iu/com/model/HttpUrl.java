@@ -118,10 +118,16 @@ public class HttpUrl {//http://wap.kylinoil.com/app/views/vip-description.html
     public static final String userSignList = finalUrl + "/user/past/list";
     //签到获得油卡
     public static final String userSignCardList = finalUrl + "/user/past/envelope";
-    //油卡转让市场
+    //转让市场
     public static final String transferSaleMarket = finalUrl + "/member/transfor/market";
-    //油卡转让市场详情
+    //转让市场详情
     public static final String transferSaleMarketDetail = finalUrl + "/member/transfor/data";
+    //转让市场详情计算金额
+    public static final String transferSaleMarketDetailGetMoney = finalUrl + "/member/transfor/caculate";
+    //转让市场详情创建订单
+    public static final String transferSaleMarketDetailOrder = finalUrl + "/member/transfor/order";
+    //转让市场详情查询订单
+    public static final String transferSaleMarketDetailGetOrder = finalUrl + "/member/transfor/info";
     //油卡转让详情
     public static final String oilCardTransferSaleDetail = finalUrl + "/member/card/data";
     //油卡转让创建

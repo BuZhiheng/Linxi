@@ -59,8 +59,8 @@ public class MyOilCardActivity extends AppCompatActivity implements IMyOilCardVi
             @Override
             public void toBottom() {
                 super.toBottom();
-                page ++;
-                presenter.getMyOilCard(page);
+//                page ++;
+//                presenter.getMyOilCard(page);
             }
         });
         refresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
