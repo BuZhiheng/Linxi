@@ -120,6 +120,8 @@ public class HttpUrl {//http://wap.kylinoil.com/app/views/vip-description.html
     public static final String userSignCardList = finalUrl + "/user/past/envelope";
     //转让市场
     public static final String transferSaleMarket = finalUrl + "/member/transfor/market";
+    //转让市场订单明细
+    public static final String transferSaleMarketOrderDetail = finalUrl + "/member/transfor/index";
     //转让市场详情
     public static final String transferSaleMarketDetail = finalUrl + "/member/transfor/data";
     //转让市场详情计算金额

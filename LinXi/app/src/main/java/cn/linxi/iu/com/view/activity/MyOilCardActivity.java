@@ -92,6 +92,8 @@ public class MyOilCardActivity extends AppCompatActivity implements IMyOilCardVi
                 popupWindow.showAsDropDown(tvRight, 0, 0);
                 break;
             case R.id.tv_dialog_popwin_transfer:
+                Intent intentTrans = new Intent(this,MyOrderTransferActivity.class);
+                startActivity(intentTrans);
                 popupWindow.dismiss();
                 break;
             case R.id.tv_dialog_popwin_transfer_oil:
