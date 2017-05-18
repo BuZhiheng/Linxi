@@ -134,6 +134,8 @@ public class HttpUrl {//http://wap.kylinoil.com/app/views/vip-description.html
     public static final String oilCardTransferSaleDetail = finalUrl + "/member/card/data";
     //油卡转让创建
     public static final String oilCardTransferSaleCreate = finalUrl + "/member/card/create";
+    //油卡转让取消
+    public static final String oilCardTransferSaleRemove = finalUrl + "/member/transfor/remove";
     //加油站登录
     public static final String businessLogin = finalUrl + "/enterprise/login";
     //加油站获取用户信息

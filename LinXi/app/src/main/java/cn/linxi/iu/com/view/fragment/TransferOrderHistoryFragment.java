@@ -85,4 +85,10 @@ public class TransferOrderHistoryFragment extends Fragment implements ITransferO
         refresh.setRefreshing(false);
         llNodata.setVisibility(View.VISIBLE);
     }
+    @Override
+    public void initData() {
+        refresh.setRefreshing(true);
+        page = 1;
+        presenter.getOrderList(page);
+    }
 }

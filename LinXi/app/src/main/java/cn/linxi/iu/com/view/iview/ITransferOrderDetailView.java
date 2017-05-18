@@ -8,4 +8,6 @@ public interface ITransferOrderDetailView {
     void showToast(String toast);
     void setData(List<TransferOrderDetail> list);
     void setNoData();
+
+    void initData();
 }

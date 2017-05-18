@@ -78,7 +78,7 @@ public class MyOrderUnFinishAdapter extends RecyclerView.Adapter<MyOrderUnFinish
         holder.btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.removeOrder(order);
+                presenter.removeOrder(order.oid);
             }
         });
     }

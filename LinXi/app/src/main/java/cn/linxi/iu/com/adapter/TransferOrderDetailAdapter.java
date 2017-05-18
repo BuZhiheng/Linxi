@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import cn.linxi.iu.com.R;
 import cn.linxi.iu.com.model.TransferOrderDetail;
+import cn.linxi.iu.com.presenter.ipresenter.IOrderUnFinishPresenter;
 /**
  * Created by BuZhiheng on 2016/3/31.
  */
@@ -18,9 +19,16 @@ public class TransferOrderDetailAdapter extends RecyclerView.Adapter<TransferOrd
     private Context context;
     private List<TransferOrderDetail> data;
     public String type;
+    private IOrderUnFinishPresenter presenter;
     public TransferOrderDetailAdapter(Context context,String type) {
         this.context = context;
         this.type = type;
+        data = new ArrayList<>();
+    }
+    public TransferOrderDetailAdapter(Context context,String type,IOrderUnFinishPresenter presenter) {
+        this.context = context;
+        this.type = type;
+        this.presenter = presenter;
         data = new ArrayList<>();
     }
     public void setData(List<TransferOrderDetail> data) {
@@ -52,6 +60,9 @@ public class TransferOrderDetailAdapter extends RecyclerView.Adapter<TransferOrd
             holder.button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    if (presenter != null){
+                        presenter.removeOrder(detail.tid);
+                    }
                 }
             });
         }

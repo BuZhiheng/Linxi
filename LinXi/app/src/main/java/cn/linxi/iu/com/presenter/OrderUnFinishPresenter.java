@@ -52,9 +52,9 @@ public class OrderUnFinishPresenter implements IOrderUnFinishPresenter {
         });
     }
     @Override
-    public void removeOrder(HistoryOrder order) {
+    public void removeOrder(String oid) {
         int userId = PrefUtil.getInt(CommonCode.SP_USER_USERID,0);
-        String url = HttpUrl.removeOrderUrl + OkHttpUtil.getSign() + "&user_id="+userId+"&oid="+order.oid;
+        String url = HttpUrl.removeOrderUrl + OkHttpUtil.getSign() + "&user_id="+userId+"&oid="+oid;
         OkHttpUtil.get(url, new Subscriber<String>() {
             @Override
             public void onCompleted() {

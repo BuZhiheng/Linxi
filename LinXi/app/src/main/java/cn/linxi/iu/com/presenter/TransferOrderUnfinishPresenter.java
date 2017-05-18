@@ -4,7 +4,8 @@ import cn.linxi.iu.com.model.BaseResult;
 import cn.linxi.iu.com.model.CommonCode;
 import cn.linxi.iu.com.model.HttpUrl;
 import cn.linxi.iu.com.model.TransferOrderDetail;
-import cn.linxi.iu.com.presenter.ipresenter.IOrderHistoryPresenter;
+import cn.linxi.iu.com.model.User;
+import cn.linxi.iu.com.presenter.ipresenter.IOrderUnFinishPresenter;
 import cn.linxi.iu.com.util.GsonUtil;
 import cn.linxi.iu.com.util.OkHttpUtil;
 import cn.linxi.iu.com.util.PrefUtil;
@@ -14,7 +15,7 @@ import rx.Subscriber;
 /**
  * Created by buzhiheng on 2017/5/17.
  */
-public class TransferOrderUnfinishPresenter implements IOrderHistoryPresenter {
+public class TransferOrderUnfinishPresenter implements IOrderUnFinishPresenter {
     private ITransferOrderDetailView view;
     public TransferOrderUnfinishPresenter(ITransferOrderDetailView view) {
         this.view = view;
@@ -46,6 +47,30 @@ public class TransferOrderUnfinishPresenter implements IOrderHistoryPresenter {
                             view.setNoData();
                         }
                     }
+                }
+            }
+        });
+    }
+
+    @Override
+    public void removeOrder(String oid) {
+        if (SystemUtils.networkState() == false){
+            view.showToast(CommonCode.NOTICE_NETWORK_DISCONNECT);
+            return;
+        }
+        String url = HttpUrl.oilCardTransferSaleRemove + OkHttpUtil.getSign() + "&user_id=" + User.getUserId() +"&tid="+oid;
+        OkHttpUtil.get(url, new Subscriber<String>() {
+            @Override
+            public void onCompleted() {
+            }
+            @Override
+            public void onError(Throwable e) {
+            }
+            @Override
+            public void onNext(String s) {
+                BaseResult result = GsonUtil.jsonToObject(s, BaseResult.class);
+                if (result.success()){
+                    view.initData();
                 }
             }
         });
