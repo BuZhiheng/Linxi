@@ -7,6 +7,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.bartoszlipinski.recyclerviewheader2.RecyclerViewHeader;
+
 import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -27,6 +30,8 @@ public class TransferMarketFragment extends Fragment implements ITransferMarketV
     SwipeRefreshLayout refresh;
     @Bind(R.id.rv_transfer_market)
     RecyclerView rvTrans;
+    @Bind(R.id.rv_header_transfer)
+    RecyclerViewHeader header;
     private TransferMarketAdapter adapter;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -40,6 +45,7 @@ public class TransferMarketFragment extends Fragment implements ITransferMarketV
     private void initView() {
         presenter = new TransferMarketPresenter(this);
         rvTrans.setLayoutManager(new LinearLayoutManager(getContext()));
+        header.attachTo(rvTrans);
         adapter = new TransferMarketAdapter(getActivity());
         rvTrans.setAdapter(adapter);
         refresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {

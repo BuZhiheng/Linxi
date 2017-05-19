@@ -8,6 +8,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.bartoszlipinski.recyclerviewheader2.RecyclerViewHeader;
 import com.umeng.analytics.MobclickAgent;
 import java.util.List;
 import butterknife.Bind;
@@ -30,6 +32,8 @@ public class MyOilCardActivity extends AppCompatActivity implements IMyOilCardVi
     private IMyOilCardPresenter presenter;
     @Bind(R.id.rv_myoilcard)
     RecyclerView rvCard;
+    @Bind(R.id.rv_header_transfer)
+    RecyclerViewHeader header;
     @Bind(R.id.srl_myoilcard)
     SwipeRefreshLayout refresh;
     @Bind(R.id.ll_include_nodata)
@@ -54,6 +58,7 @@ public class MyOilCardActivity extends AppCompatActivity implements IMyOilCardVi
         ((TextView)findViewById(R.id.tv_titlebar_right)).setText("油卡明细");
         adapter = new MyOilCardAdapter(this);
         rvCard.setLayoutManager(new LinearLayoutManager(this));
+        header.attachTo(rvCard);
         rvCard.setAdapter(adapter);
         rvCard.addOnScrollListener(new OnRvScrollListener(){
             @Override

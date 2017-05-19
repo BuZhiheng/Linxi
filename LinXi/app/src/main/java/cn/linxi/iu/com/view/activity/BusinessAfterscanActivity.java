@@ -13,6 +13,7 @@ import butterknife.ButterKnife;
 import cn.linxi.iu.com.R;
 import cn.linxi.iu.com.model.Automac;
 import cn.linxi.iu.com.model.SaleOilCard;
+import cn.linxi.iu.com.model.UserHaveGoods;
 import cn.linxi.iu.com.presenter.BusinessAfterScanPresenter;
 import cn.linxi.iu.com.presenter.ipresenter.IBusinessAfterScanPresenter;
 import cn.linxi.iu.com.util.ToastUtil;
@@ -50,7 +51,7 @@ public class BusinessAfterscanActivity extends AppCompatActivity implements IBus
         ToastUtil.show(toast);
     }
     @Override
-    public void setOilList(List<SaleOilCard> list) {
+    public void setOilList(List<UserHaveGoods> list) {
         llOilContent.setVisibility(View.VISIBLE);
         for (int i=0;i<list.size();i++){
             TextView textView = new TextView(this);
@@ -59,10 +60,10 @@ public class BusinessAfterscanActivity extends AppCompatActivity implements IBus
         }
     }
     @Override
-    public void setGoodsList(List<Automac> listGoods) {
+    public void setGoodsList(List<UserHaveGoods> listGoods) {
         llGoodsContent.setVisibility(View.VISIBLE);
         for (int i=0;i<listGoods.size();i++){
-            final Automac mac = listGoods.get(i);
+            final UserHaveGoods mac = listGoods.get(i);
             View view = LayoutInflater.from(this).inflate(R.layout.activity_business_afterscan_item, null);
             TextView tvName = (TextView) view.findViewById(R.id.tv_business_afterscan_name);
             TextView tvNum = (TextView) view.findViewById(R.id.tv_business_afterscan_num);

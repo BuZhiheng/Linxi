@@ -4,7 +4,6 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-
 import org.greenrobot.eventbus.EventBus;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -18,7 +17,7 @@ import cn.linxi.iu.com.model.BusinessAfterScanJson;
 import cn.linxi.iu.com.model.CommonCode;
 import cn.linxi.iu.com.model.EventSaleSuccess;
 import cn.linxi.iu.com.model.HttpUrl;
-import cn.linxi.iu.com.model.SaleOilCard;
+import cn.linxi.iu.com.model.UserHaveGoods;
 import cn.linxi.iu.com.presenter.ipresenter.IBusinessAfterScanPresenter;
 import cn.linxi.iu.com.util.GsonUtil;
 import cn.linxi.iu.com.util.OkHttpUtil;
@@ -36,7 +35,7 @@ public class BusinessAfterScanPresenter implements IBusinessAfterScanPresenter {
     private IBusinessAfterScanView view;
     private String code;
     private BusinessAfterScanJson json;
-    private List<Automac> listGoods;
+    private List<UserHaveGoods> listGoods;
     private JSONArray array;
     public BusinessAfterScanPresenter(IBusinessAfterScanView view){
         this.view = view;
@@ -51,12 +50,12 @@ public class BusinessAfterScanPresenter implements IBusinessAfterScanPresenter {
             return;
         }
         code = intent.getStringExtra(CommonCode.INTENT_QRCODE);
-        String stationId = PrefUtil.getString(CommonCode.SP_USER_STATION_ID, "");
+//        String stationId = PrefUtil.getString(CommonCode.SP_USER_STATION_ID, "");
         String operatId = PrefUtil.getInt(CommonCode.SP_USER_OPERA_ID,0)+"";
         RequestBody body = new FormBody.Builder()
 //                .add("token",token)
-                .add("station_id",stationId)
-                .add("operat_id",operatId)
+//                .add("station_id",stationId)
+                .add("operat_id", operatId)
                 .build();
         OkHttpUtil.post(HttpUrl.finalUrl + code, body, new Subscriber<String>() {
             @Override
@@ -67,12 +66,13 @@ public class BusinessAfterScanPresenter implements IBusinessAfterScanPresenter {
             }
             @Override
             public void onNext(String s) {
+                view.showToast(s);
                 BaseResult result = GsonUtil.jsonToObject(s, BaseResult.class);
                 if (result.success()) {
                     json = GsonUtil.jsonToObject(result.getResult(),BusinessAfterScanJson.class);
                     boolean oilIsNull = false;
                     if (json.oil != null){
-                        List<SaleOilCard> list = GsonUtil.jsonToList(json.oil,SaleOilCard.class);
+                        List<UserHaveGoods> list = GsonUtil.jsonToList(json.oil,UserHaveGoods.class);
                         if (list.size() > 0){
                             view.setOilList(list);
                         } else {
@@ -82,7 +82,7 @@ public class BusinessAfterScanPresenter implements IBusinessAfterScanPresenter {
                         oilIsNull = true;
                     }
                     if (json.goods != null){
-                        listGoods = GsonUtil.jsonToList(json.goods,Automac.class);
+                        listGoods = GsonUtil.jsonToList(json.goods,UserHaveGoods.class);
                         if (listGoods.size() > 0){
                             view.setGoodsList(listGoods);
                         } else {
@@ -105,6 +105,7 @@ public class BusinessAfterScanPresenter implements IBusinessAfterScanPresenter {
     @Override
     public void orderSure(LinearLayout llGoods, LinearLayout llGoodsCout) {
         if (listGoods == null || listGoods.size() == 0){
+            view.showToast("未选择物品");
             return;
         }
         List<Automac> listSure = new ArrayList<>();
@@ -115,7 +116,7 @@ public class BusinessAfterScanPresenter implements IBusinessAfterScanPresenter {
             if ("1".equals(ivCheck.getTag())){
                 View vCout = llGoodsCout.getChildAt(i);
                 EditText etCout = (EditText) vCout.findViewById(R.id.et_business_afterscan_auto);
-                Automac automac = listGoods.get(i);
+                UserHaveGoods automac = listGoods.get(i);
                 String sCout = etCout.getText().toString();
                 if (StringUtil.isWrongNum(sCout)){
                     view.showToast("请正确输入"+automac.name+"数量");

@@ -20,6 +20,13 @@
                 android:id="@+id/rv_myoilcard"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
+            <com.bartoszlipinski.recyclerviewheader2.RecyclerViewHeader
+                android:id="@+id/rv_header_transfer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+                <include layout="@layout/activity_transfer_image_title"/>
+            </com.bartoszlipinski.recyclerviewheader2.RecyclerViewHeader>
             <include layout="@layout/include_common_nodata"/>
         </FrameLayout>
     </android.support.v4.widget.SwipeRefreshLayout>
