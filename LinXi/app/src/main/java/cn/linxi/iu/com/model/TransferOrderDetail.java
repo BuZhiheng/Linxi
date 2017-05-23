@@ -9,4 +9,6 @@ public class TransferOrderDetail {
     public String create_time;
     public String name;
     public String oil_type;
+
+    public String amount;//创建订单 TransferOrderActivity
 }

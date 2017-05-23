@@ -1,4 +1,5 @@
 package cn.linxi.iu.com.view.activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -14,12 +15,14 @@ import org.xutils.x;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import cn.linxi.iu.com.R;
+import cn.linxi.iu.com.model.CommonCode;
 import cn.linxi.iu.com.model.Order;
 import cn.linxi.iu.com.model.SaleOilCard;
 import cn.linxi.iu.com.model.StationOilType;
 import cn.linxi.iu.com.model.TransferBuyCaculate;
 import cn.linxi.iu.com.presenter.TransferBuyPresenter;
 import cn.linxi.iu.com.presenter.ipresenter.ITransferBuyPresenter;
+import cn.linxi.iu.com.util.NAVIUtil;
 import cn.linxi.iu.com.util.ToastUtil;
 import cn.linxi.iu.com.view.iview.ITransferBuyView;
 /**
@@ -48,6 +51,7 @@ public class TransferBuyActivity extends AppCompatActivity implements ITransferB
     @Bind(R.id.ll_transfer_market_item)
     LinearLayout layout;
     private StationOilType selecedPrice;
+    private SaleOilCard card;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,7 +62,7 @@ public class TransferBuyActivity extends AppCompatActivity implements ITransferB
     }
     private void initView() {
         ((TextView)findViewById(R.id.tv_titlebar_title)).setText("转让市场");
-        ((ImageView)findViewById(R.id.iv_titlebar_right)).setImageResource(R.drawable.ic_shopping_car);
+        findViewById(R.id.iv_titlebar_right).setVisibility(View.GONE);
         presenter.getData();
         editText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -79,6 +83,7 @@ public class TransferBuyActivity extends AppCompatActivity implements ITransferB
     }
     @Override
     public void setData(SaleOilCard sale) {
+        this.card = sale;
         tvName.setText(sale.name);
         tvAddress.setText(sale.address);
         x.image().bind(photo, sale.avatar);
@@ -118,6 +123,9 @@ public class TransferBuyActivity extends AppCompatActivity implements ITransferB
     @Override
     public void orderSuccess(Order order) {
         showToast(order.oid);
+        Intent intent = new Intent(this,TransferOrderActivity.class);
+        intent.putExtra(CommonCode.INTENT_ORDER_ID,order.oid);
+        startActivity(intent);
     }
     private void initOilModelList(int curr) {
         int count = layout.getChildCount();
@@ -146,6 +154,9 @@ public class TransferBuyActivity extends AppCompatActivity implements ITransferB
                 editText.setText(presenter.onCoutSub(editText,selecedPrice));
                 break;
             case R.id.btn_transfer_buy_gothere:
+                if (card != null){
+                    NAVIUtil.toNAVIActivity(this, card.latitude, card.longitude);
+                }
                 break;
             case R.id.btn_transfer_market_buy:
                 presenter.order(editText,selecedPrice);

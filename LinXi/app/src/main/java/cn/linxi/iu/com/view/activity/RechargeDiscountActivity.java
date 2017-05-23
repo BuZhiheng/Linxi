@@ -56,7 +56,7 @@ public class RechargeDiscountActivity extends AppCompatActivity implements IRech
                 showToast("支付成功");
                 finish();
             } else {
-                showToast(memo);
+                showToast(memo+resultStatus);
             }
         }
     };

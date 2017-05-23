@@ -22,7 +22,6 @@ import cn.linxi.iu.com.view.iview.ITransferBuyView;
 import okhttp3.FormBody;
 import okhttp3.RequestBody;
 import rx.Subscriber;
-
 /**
  * Created by buzhiheng on 2017/5/12.
  */

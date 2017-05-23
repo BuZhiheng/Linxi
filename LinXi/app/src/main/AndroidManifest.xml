@@ -220,6 +220,7 @@
         <activity android:name=".view.activity.TransferSaleActivity"
                   android:windowSoftInputMode="adjustPan|stateHidden"
             />
+        <activity android:name=".view.activity.TransferOrderActivity"/>
         <activity android:name=".view.activity.MyOrderTransferActivity"/>
         <activity android:name=".view.activity.VipCenterActivity"/>
         <activity android:name=".view.activity.WaitForOpenActivity"/>

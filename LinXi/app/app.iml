@@ -113,7 +113,6 @@
     <orderEntry type="library" exported="" name="support-v4-23.1.1" level="project" />
     <orderEntry type="library" exported="" name="BaiduLBS_Android" level="project" />
     <orderEntry type="library" exported="" name="support-annotations-23.1.1" level="project" />
-    <orderEntry type="library" exported="" name="alipaySdk-20160812" level="project" />
     <orderEntry type="library" exported="" name="appcompat-v7-23.1.1" level="project" />
     <orderEntry type="library" exported="" name="wup-1.0.0-SNAPSHOT" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="multidex-instrumentation-1.0.1" level="project" />
@@ -137,6 +136,7 @@
     <orderEntry type="library" exported="" name="recyclerviewheader2-2.0.1" level="project" />
     <orderEntry type="library" exported="" name="mobilepb" level="project" />
     <orderEntry type="library" exported="" name="bga-qrcodecore-1.1.5" level="project" />
+    <orderEntry type="library" exported="" name="alipaySingle-20170510" level="project" />
     <orderEntry type="library" exported="" name="org.apache.http.legacy-android-23" level="project" />
   </component>
 </module>
