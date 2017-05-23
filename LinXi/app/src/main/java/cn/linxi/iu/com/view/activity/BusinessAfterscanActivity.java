@@ -1,9 +1,12 @@
 package cn.linxi.iu.com.view.activity;
 import android.app.Dialog;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -12,7 +15,6 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import cn.linxi.iu.com.R;
 import cn.linxi.iu.com.model.Automac;
-import cn.linxi.iu.com.model.SaleOilCard;
 import cn.linxi.iu.com.model.UserHaveGoods;
 import cn.linxi.iu.com.presenter.BusinessAfterScanPresenter;
 import cn.linxi.iu.com.presenter.ipresenter.IBusinessAfterScanPresenter;
@@ -34,6 +36,10 @@ public class BusinessAfterscanActivity extends AppCompatActivity implements IBus
     LinearLayout llGoods;
     @Bind(R.id.ll_business_afterscan_goodscout)
     LinearLayout llGoodsCout;
+    @Bind(R.id.tv_business_afterscan_oiltype)
+    TextView tvOiltype;
+    @Bind(R.id.et_business_afterscan_oil_purchase)
+    EditText etOilPurchase;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,9 +60,34 @@ public class BusinessAfterscanActivity extends AppCompatActivity implements IBus
     public void setOilList(List<UserHaveGoods> list) {
         llOilContent.setVisibility(View.VISIBLE);
         for (int i=0;i<list.size();i++){
-            TextView textView = new TextView(this);
-            textView.setText(list.get(i).name);
-            llOil.addView(textView);
+            final UserHaveGoods mac = list.get(i);
+            View view = LayoutInflater.from(this).inflate(R.layout.activity_business_afterscan_item, null);
+            TextView tvName = (TextView) view.findViewById(R.id.tv_business_afterscan_name);
+            TextView tvNum = (TextView) view.findViewById(R.id.tv_business_afterscan_num);
+            FrameLayout frameLayout = (FrameLayout) view.findViewById(R.id.fl_business_afterscan_item);
+            tvName.setText("油品型号："+mac.name);
+            tvNum.setText(mac.num + "L");
+            final int finalI = i;
+            frameLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    tvOiltype.setText(mac.name);
+                    initOilModelList(finalI);
+                }
+            });
+            llOil.addView(view);
+        }
+    }
+    private void initOilModelList(int curr) {
+        int count = llOil.getChildCount();
+        for (int i = 0; i < count; i++) {
+            View view = llOil.getChildAt(i);
+            ImageView imageView = (ImageView) view.findViewById(R.id.iv_business_afterscan_check);
+            if (i == curr){
+                imageView.setImageResource(R.drawable.ic_station_checked);
+            } else {
+                imageView.setImageResource(R.drawable.ic_station_check);
+            }
         }
     }
     @Override

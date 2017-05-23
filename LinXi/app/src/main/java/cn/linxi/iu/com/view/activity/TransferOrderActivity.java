@@ -1,15 +1,20 @@
 package cn.linxi.iu.com.view.activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import cn.linxi.iu.com.R;
+import cn.linxi.iu.com.model.CommonCode;
 import cn.linxi.iu.com.model.TransferOrder;
 import cn.linxi.iu.com.model.TransferOrderDetail;
 import cn.linxi.iu.com.presenter.TransferOrderPresenter;
 import cn.linxi.iu.com.presenter.ipresenter.ITransferOrderPresenter;
+import cn.linxi.iu.com.util.ToastUtil;
 import cn.linxi.iu.com.view.iview.ITransferOrderView;
 /**
  * Created by buzhiheng on 2017/5/22.
@@ -20,6 +25,13 @@ public class TransferOrderActivity extends AppCompatActivity implements ITransfe
     TextView tvType;
     @Bind(R.id.tv_transfer_order_total)
     TextView tvTotal;
+    @Bind(R.id.ll_transfer_order_item)
+    LinearLayout llItem;
+    @Bind(R.id.iv_orderpy_checkzfb)
+    ImageView ivCheckZFB;
+    @Bind(R.id.iv_orderpy_checkwx)
+    ImageView ivCheckWx;
+    private int payType = CommonCode.PAY_BY_ZFB;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +46,7 @@ public class TransferOrderActivity extends AppCompatActivity implements ITransfe
     }
     @Override
     public void showToast(String toast) {
+        ToastUtil.show(toast);
     }
     @Override
     public void setOrderData(TransferOrder order) {
@@ -42,12 +55,33 @@ public class TransferOrderActivity extends AppCompatActivity implements ITransfe
     }
     @Override
     public void setOrderItem(TransferOrderDetail detail) {
+        View view = LayoutInflater.from(this).inflate(R.layout.activity_transfer_order_item,null);
+        TextView tvPrice = (TextView) view.findViewById(R.id.tv_transfer_order_item_price);
+        TextView tvPurchase = (TextView) view.findViewById(R.id.tv_transfer_order_item_purchase);
+        TextView tvAmount = (TextView) view.findViewById(R.id.tv_transfer_order_item_amount);
+        tvPrice.setText(detail.price);
+        tvPurchase.setText(detail.purchase);
+        tvAmount.setText(detail.amount);
+        llItem.addView(view);
     }
     @Override
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.fl_titlebar_back:
                 finish();
+                break;
+            case R.id.fl_order_pay_zfb:
+                ivCheckZFB.setImageResource(R.drawable.ic_station_checked);
+                ivCheckWx.setImageResource(R.drawable.ic_station_check);
+                payType = CommonCode.PAY_BY_ZFB;
+                break;
+            case R.id.fl_order_pay_wx:
+                ivCheckZFB.setImageResource(R.drawable.ic_station_check);
+                ivCheckWx.setImageResource(R.drawable.ic_station_checked);
+                payType = CommonCode.PAY_BY_WX;
+                break;
+            case R.id.btn_transfer_order_pay:
+                presenter.pay(payType);
                 break;
         }
     }

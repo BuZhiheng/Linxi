@@ -59,6 +59,7 @@
                     />
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/ll_transfer_order_item"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -164,6 +165,7 @@
                     />
             </LinearLayout>
             <Button
+                android:id="@+id/btn_transfer_order_pay"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/common_title_height"
                 android:layout_margin="@dimen/common_margin_large"
@@ -171,6 +173,7 @@
                 android:text="立即付款"
                 android:textSize="@dimen/text_common_item_title"
                 android:textColor="@color/color_white"
+                android:onClick="onClick"
                 />
         </LinearLayout>
     </ScrollView>

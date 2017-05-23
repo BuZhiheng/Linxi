@@ -1,9 +1,13 @@
 package cn.linxi.iu.com.presenter;
 import android.content.Intent;
+
+import java.util.List;
+
 import cn.linxi.iu.com.model.BaseResult;
 import cn.linxi.iu.com.model.CommonCode;
 import cn.linxi.iu.com.model.HttpUrl;
 import cn.linxi.iu.com.model.TransferOrder;
+import cn.linxi.iu.com.model.TransferOrderDetail;
 import cn.linxi.iu.com.model.User;
 import cn.linxi.iu.com.presenter.ipresenter.ITransferOrderPresenter;
 import cn.linxi.iu.com.util.GsonUtil;
@@ -45,6 +49,10 @@ public class TransferOrderPresenter implements ITransferOrderPresenter {
                 if (result.success()){
                     TransferOrder order = GsonUtil.jsonToObject(result.getResult(),TransferOrder.class);
                     view.setOrderData(order);
+                    List<TransferOrderDetail> list = GsonUtil.jsonToList(order.json,TransferOrderDetail.class);
+                    for (int i=0;i<list.size();i++){
+                        view.setOrderItem(list.get(i));
+                    }
                 } else {
                     view.showToast(result.error);
                 }
@@ -52,6 +60,11 @@ public class TransferOrderPresenter implements ITransferOrderPresenter {
         });
     }
     @Override
-    public void pay(String type) {
+    public void pay(int type) {
+        if (type == CommonCode.PAY_BY_ZFB){
+            view.showToast("支付宝");
+        } else {
+            view.showToast("微信");
+        }
     }
 }

@@ -4,5 +4,5 @@ package cn.linxi.iu.com.presenter.ipresenter;
  */
 public interface ITransferOrderPresenter {
     void getOrder();
-    void pay(String type);
+    void pay(int type);
 }
