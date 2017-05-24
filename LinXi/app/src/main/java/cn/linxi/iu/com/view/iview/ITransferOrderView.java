@@ -1,4 +1,6 @@
 package cn.linxi.iu.com.view.iview;
+import java.util.Map;
+
 import cn.linxi.iu.com.model.TransferOrder;
 import cn.linxi.iu.com.model.TransferOrderDetail;
 /**
@@ -8,4 +10,5 @@ public interface ITransferOrderView {
     void showToast(String toast);
     void setOrderData(TransferOrder order);
     void setOrderItem(TransferOrderDetail detail);
+    void aliPayResult(Map<String, String> stringStringMap);
 }

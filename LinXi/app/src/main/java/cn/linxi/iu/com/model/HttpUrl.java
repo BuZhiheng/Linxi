@@ -130,6 +130,10 @@ public class HttpUrl {//http://wap.kylinoil.com/app/views/vip-description.html
     public static final String transferSaleMarketDetailOrder = finalUrl + "/member/transfor/order";
     //转让市场详情查询订单
     public static final String transferSaleMarketDetailGetOrder = finalUrl + "/member/transfor/info";
+    //转让市场订单支付支付宝
+    public static final String transferSaleMarketOrderPayZFB = finalUrl + "/capital/alipay/transfor";
+    //转让市场订单支付微信
+    public static final String transferSaleMarketOrderPayWX = finalUrl + "/capital/wxpay/transfor";
     //油卡转让详情
     public static final String oilCardTransferSaleDetail = finalUrl + "/member/card/data";
     //油卡转让创建

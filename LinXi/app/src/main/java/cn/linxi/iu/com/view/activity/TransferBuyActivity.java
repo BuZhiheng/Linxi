@@ -122,7 +122,6 @@ public class TransferBuyActivity extends AppCompatActivity implements ITransferB
     }
     @Override
     public void orderSuccess(Order order) {
-        showToast(order.oid);
         Intent intent = new Intent(this,TransferOrderActivity.class);
         intent.putExtra(CommonCode.INTENT_ORDER_ID,order.oid);
         startActivity(intent);

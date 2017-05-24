@@ -1,15 +1,26 @@
 package cn.linxi.iu.com.view.activity;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
+import java.util.Map;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import cn.linxi.iu.com.R;
 import cn.linxi.iu.com.model.CommonCode;
+import cn.linxi.iu.com.model.EventUserMsgChanged;
+import cn.linxi.iu.com.model.EventWxPaySuccess;
 import cn.linxi.iu.com.model.TransferOrder;
 import cn.linxi.iu.com.model.TransferOrderDetail;
 import cn.linxi.iu.com.presenter.TransferOrderPresenter;
@@ -32,11 +43,28 @@ public class TransferOrderActivity extends AppCompatActivity implements ITransfe
     @Bind(R.id.iv_orderpy_checkwx)
     ImageView ivCheckWx;
     private int payType = CommonCode.PAY_BY_ZFB;
+    private Map<String,String> result;
+    Handler handler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            String resultStatus = result.get("resultStatus");
+            String memo = result.get("memo");
+            if ("9000".equals(resultStatus)){
+                EventBus.getDefault().post(new EventUserMsgChanged());
+                showToast("支付成功");
+                finish();
+            } else {
+                showToast(memo);
+            }
+        }
+    };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transfer_order);
         ButterKnife.bind(this);
+        EventBus.getDefault().register(this);
         presenter = new TransferOrderPresenter(this,getIntent());
         initView();
     }
@@ -51,7 +79,7 @@ public class TransferOrderActivity extends AppCompatActivity implements ITransfe
     @Override
     public void setOrderData(TransferOrder order) {
         tvType.setText("  购买明细("+order.oil_type+")");
-        tvTotal.setText("¥"+order.total);
+        tvTotal.setText("¥" + order.total);
     }
     @Override
     public void setOrderItem(TransferOrderDetail detail) {
@@ -63,6 +91,15 @@ public class TransferOrderActivity extends AppCompatActivity implements ITransfe
         tvPurchase.setText(detail.purchase);
         tvAmount.setText(detail.amount);
         llItem.addView(view);
+    }
+    @Override
+    public void aliPayResult(Map<String, String> stringStringMap) {
+        this.result = stringStringMap;
+        handler.sendEmptyMessage(0x001);
+    }
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEvent(EventWxPaySuccess paySuccess){//支付成功
+        finish();
     }
     @Override
     public void onClick(View v) {
