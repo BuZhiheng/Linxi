@@ -65,29 +65,32 @@ public class BusinessAfterscanActivity extends AppCompatActivity implements IBus
             TextView tvName = (TextView) view.findViewById(R.id.tv_business_afterscan_name);
             TextView tvNum = (TextView) view.findViewById(R.id.tv_business_afterscan_num);
             FrameLayout frameLayout = (FrameLayout) view.findViewById(R.id.fl_business_afterscan_item);
+            final ImageView imageView = (ImageView) view.findViewById(R.id.iv_business_afterscan_check);
             tvName.setText("油品型号："+mac.name);
             tvNum.setText(mac.num + "L");
-            final int finalI = i;
             frameLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     tvOiltype.setText(mac.name);
-                    initOilModelList(finalI);
+                    initOilModelList();
+                    presenter.setOilCheck(imageView, mac, new BusinessAfterScanPresenter.OnGoodsCheckListener() {
+                        @Override
+                        public void onClick(int drawable, String tag) {
+                            imageView.setTag(tag);
+                            imageView.setImageResource(drawable);
+                        }
+                    });
                 }
             });
             llOil.addView(view);
         }
     }
-    private void initOilModelList(int curr) {
+    private void initOilModelList() {
         int count = llOil.getChildCount();
         for (int i = 0; i < count; i++) {
             View view = llOil.getChildAt(i);
             ImageView imageView = (ImageView) view.findViewById(R.id.iv_business_afterscan_check);
-            if (i == curr){
-                imageView.setImageResource(R.drawable.ic_station_checked);
-            } else {
-                imageView.setImageResource(R.drawable.ic_station_check);
-            }
+            imageView.setImageResource(R.drawable.ic_station_check);
         }
     }
     @Override
@@ -157,7 +160,7 @@ public class BusinessAfterscanActivity extends AppCompatActivity implements IBus
                 finish();
                 break;
             case R.id.tv_business_afterscan_sure:
-                presenter.orderSure(llGoods,llGoodsCout);
+                presenter.orderSure(etOilPurchase,llGoods,llGoodsCout);
                 break;
         }
     }

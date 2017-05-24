@@ -5,6 +5,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -35,6 +36,8 @@ public class BusinessAfterScanSureDialog extends Dialog {
             View vContent = LayoutInflater.from(context).inflate(R.layout.activity_business_afterscan_item, null);
             TextView tvName = (TextView) vContent.findViewById(R.id.tv_business_afterscan_name);
             TextView tvNum = (TextView) vContent.findViewById(R.id.tv_business_afterscan_num);
+            ImageView imageView = (ImageView) vContent.findViewById(R.id.iv_business_afterscan_check);
+            imageView.setImageResource(R.drawable.ic_station_checked);
             Automac automac = list.get(i);
             tvName.setText(automac.name);
             tvNum.setText("x"+automac.num);

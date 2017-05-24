@@ -42,8 +42,8 @@
                 android:layout_width="@dimen/common_margin_large"
                 android:layout_height="@dimen/common_margin_large"
                 android:layout_marginTop="@dimen/common_margin"
-                android:src="@drawable/ic_station_checked"
-                android:tag="1"
+                android:src="@drawable/ic_station_check"
+                android:tag="0"
                 />
         </LinearLayout>
     </LinearLayout>

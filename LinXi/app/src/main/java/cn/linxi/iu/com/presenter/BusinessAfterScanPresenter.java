@@ -36,6 +36,7 @@ public class BusinessAfterScanPresenter implements IBusinessAfterScanPresenter {
     private String code;
     private BusinessAfterScanJson json;
     private List<UserHaveGoods> listGoods;
+    private UserHaveGoods goods;
     private JSONArray array;
     public BusinessAfterScanPresenter(IBusinessAfterScanView view){
         this.view = view;
@@ -103,37 +104,61 @@ public class BusinessAfterScanPresenter implements IBusinessAfterScanPresenter {
         });
     }
     @Override
-    public void orderSure(LinearLayout llGoods, LinearLayout llGoodsCout) {
-        if (listGoods == null || listGoods.size() == 0){
-            view.showToast("未选择物品");
-            return;
-        }
+    public void orderSure(EditText etOilPurchase, LinearLayout llGoods, LinearLayout llGoodsCout) {
         List<Automac> listSure = new ArrayList<>();
         array = new JSONArray();
-        for (int i=0;i<llGoods.getChildCount();i++){
-            View vGoods = llGoods.getChildAt(i);
-            ImageView ivCheck = (ImageView) vGoods.findViewById(R.id.iv_business_afterscan_check);
-            if ("1".equals(ivCheck.getTag())){
-                View vCout = llGoodsCout.getChildAt(i);
-                EditText etCout = (EditText) vCout.findViewById(R.id.et_business_afterscan_auto);
-                UserHaveGoods automac = listGoods.get(i);
-                String sCout = etCout.getText().toString();
-                if (StringUtil.isWrongNum(sCout)){
-                    view.showToast("请正确输入"+automac.name+"数量");
-                    return;
+        if (listGoods == null || listGoods.size() == 0){
+            if (goods == null){
+                view.showToast("未选择物品");
+                return;
+            }
+        } else {
+            for (int i=0;i<llGoods.getChildCount();i++){
+                View vGoods = llGoods.getChildAt(i);
+                ImageView ivCheck = (ImageView) vGoods.findViewById(R.id.iv_business_afterscan_check);
+                if ("1".equals(ivCheck.getTag())){
+                    View vCout = llGoodsCout.getChildAt(i);
+                    EditText etCout = (EditText) vCout.findViewById(R.id.et_business_afterscan_auto);
+                    UserHaveGoods automac = listGoods.get(i);
+                    String sCout = etCout.getText().toString();
+                    if (StringUtil.isWrongNum(sCout)){
+                        view.showToast("请正确输入"+automac.name+"数量");
+                        return;
+                    }
+                    JSONObject jsonObject = new JSONObject();
+                    try {
+                        jsonObject.put("gid",automac.gid);
+                        jsonObject.put("num",sCout);
+                        jsonObject.put("type",1);
+                        array.put(jsonObject);
+                        Automac a = new Automac();
+                        a.name = automac.name;
+                        a.num = sCout;
+                        listSure.add(a);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                 }
-                JSONObject jsonObject = new JSONObject();
-                try {
-                    jsonObject.put("gid",automac.gid);
-                    jsonObject.put("num",sCout);
-                    array.put(jsonObject);
-                    Automac a = new Automac();
-                    a.name = automac.name;
-                    a.num = sCout;
-                    listSure.add(a);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+            }
+        }
+        if (goods != null){
+            String oilPurchase = etOilPurchase.getText().toString();
+            if (StringUtil.isWrongNum(oilPurchase)){
+                view.showToast("请正确输入油量");
+                return;
+            }
+            JSONObject jsonObjectOil = new JSONObject();
+            try {
+                jsonObjectOil.put("gid",goods.gid);
+                jsonObjectOil.put("num",oilPurchase);
+                jsonObjectOil.put("type",0);
+                array.put(jsonObjectOil);
+                Automac a = new Automac();
+                a.name = goods.name;
+                a.num = oilPurchase;
+                listSure.add(a);
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
         }
         if (listSure.size() == 0){
@@ -142,6 +167,19 @@ public class BusinessAfterScanPresenter implements IBusinessAfterScanPresenter {
         }
         view.showOrderSureDialog(listSure);
     }
+
+    @Override
+    public void setOilCheck(ImageView imageView, UserHaveGoods mac, OnGoodsCheckListener onGoodsCheckListener) {
+        String tag = (String) imageView.getTag();
+        if ("1".equals(tag)){
+            onGoodsCheckListener.onClick(R.drawable.ic_station_check,"0");
+            this.goods = null;
+        } else {
+            onGoodsCheckListener.onClick(R.drawable.ic_station_checked,"1");
+            this.goods = mac;
+        }
+    }
+
     public void order(){
         if (SystemUtils.networkState() == false){
             view.showToast(CommonCode.NOTICE_NETWORK_DISCONNECT);
