@@ -97,7 +97,7 @@ public class TransferSalePresenter implements ITransferSalePresenter {
         }
         float f = Float.parseFloat(cout);
         float f_ = f - 1;
-        if (f_ < 0){
+        if (f_ < 1){
             return "1";
         } else {
             return WindowUtil.getRoundFloat(f_)+"";

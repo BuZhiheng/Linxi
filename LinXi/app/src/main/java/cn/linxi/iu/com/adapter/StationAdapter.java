@@ -84,7 +84,7 @@ public class StationAdapter extends RecyclerView.Adapter<StationAdapter.MyViewHo
                     color = ContextCompat.getColor(context,R.color.color_station_price1);
                 }
                 tvItem.setText(list.get(i).item);
-                tvPrice.setText(list.get(i).item_price);
+                tvPrice.setText("  "+list.get(i).item_price);
                 tvPrice.setTextColor(color);
                 holder.ll.addView(view);
             }

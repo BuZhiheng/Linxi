@@ -17,9 +17,9 @@ import butterknife.ButterKnife;
 import cn.linxi.iu.com.R;
 import cn.linxi.iu.com.model.CommonCode;
 import cn.linxi.iu.com.model.Order;
-import cn.linxi.iu.com.model.SaleOilCard;
 import cn.linxi.iu.com.model.StationOilType;
 import cn.linxi.iu.com.model.TransferBuyCaculate;
+import cn.linxi.iu.com.model.TransferBuyData;
 import cn.linxi.iu.com.presenter.TransferBuyPresenter;
 import cn.linxi.iu.com.presenter.ipresenter.ITransferBuyPresenter;
 import cn.linxi.iu.com.util.NAVIUtil;
@@ -51,7 +51,7 @@ public class TransferBuyActivity extends AppCompatActivity implements ITransferB
     @Bind(R.id.ll_transfer_market_item)
     LinearLayout layout;
     private StationOilType selecedPrice;
-    private SaleOilCard card;
+    private TransferBuyData card;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,7 +82,7 @@ public class TransferBuyActivity extends AppCompatActivity implements ITransferB
         ToastUtil.show(toast);
     }
     @Override
-    public void setData(SaleOilCard sale) {
+    public void setData(TransferBuyData sale) {
         this.card = sale;
         tvName.setText(sale.name);
         tvAddress.setText(sale.address);
@@ -101,6 +101,7 @@ public class TransferBuyActivity extends AppCompatActivity implements ITransferB
                 //code 设置当前选中的price
                 selecedPrice = stationOilType;
                 tvMax.setText("最多"+selecedPrice.max_purchase+"L");
+                editText.setText(selecedPrice.max_purchase);
                 presenter.getTransferMoney(editText,selecedPrice);
             }
         });
@@ -109,6 +110,7 @@ public class TransferBuyActivity extends AppCompatActivity implements ITransferB
             tv.setBackgroundResource(R.drawable.bg_ll_station_goods_yellow);
             selecedPrice = stationOilType;
             tvMax.setText("最多"+selecedPrice.max_purchase+"L");
+            editText.setText(selecedPrice.max_purchase);
             presenter.getTransferMoney(editText,selecedPrice);
         }
         layout.addView(view);
@@ -154,7 +156,7 @@ public class TransferBuyActivity extends AppCompatActivity implements ITransferB
                 break;
             case R.id.btn_transfer_buy_gothere:
                 if (card != null){
-                    NAVIUtil.toNAVIActivity(this, card.latitude, card.longitude);
+                    NAVIUtil.toNAVIActivity(this, card.lat, card.lng);
                 }
                 break;
             case R.id.btn_transfer_market_buy:

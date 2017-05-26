@@ -44,7 +44,7 @@ public class TransferOrderHistoryFragment extends Fragment implements ITransferO
     private void initView() {
         refresh.setProgressViewOffset(false, CommonCode.OFFSET_START, CommonCode.OFFSET_END);
         presenter = new TransferOrderHistoryPresenter(this);
-        adapter = new TransferOrderDetailAdapter(getContext(),"0");
+        adapter = new TransferOrderDetailAdapter(getContext(),"1");
         rvMyorder.setLayoutManager(new LinearLayoutManager(getContext()));
         rvMyorder.setAdapter(adapter);
         rvMyorder.addOnScrollListener(new OnRvScrollListener() {

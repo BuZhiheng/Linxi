@@ -11,6 +11,7 @@ import cn.linxi.iu.com.model.Order;
 import cn.linxi.iu.com.model.SaleOilCard;
 import cn.linxi.iu.com.model.StationOilType;
 import cn.linxi.iu.com.model.TransferBuyCaculate;
+import cn.linxi.iu.com.model.TransferBuyData;
 import cn.linxi.iu.com.model.User;
 import cn.linxi.iu.com.presenter.ipresenter.ITransferBuyPresenter;
 import cn.linxi.iu.com.util.GsonUtil;
@@ -50,7 +51,7 @@ public class TransferBuyPresenter implements ITransferBuyPresenter {
             public void onNext(String s) {
                 BaseResult result = GsonUtil.jsonToObject(s,BaseResult.class);
                 if (result.success()){
-                    SaleOilCard sale = GsonUtil.jsonToObject(result.getResult(),SaleOilCard.class);
+                    TransferBuyData sale = GsonUtil.jsonToObject(result.getResult(),TransferBuyData.class);
                     view.setData(sale);
                     if (sale.tags != null){
                         List<StationOilType> list = GsonUtil.jsonToList(sale.tags,StationOilType.class);

@@ -9,7 +9,7 @@ public class HttpUrl {//http://wap.kylinoil.com/app/views/vip-description.html
     public static final String devBaseUrl = "http://dev-api.kylinoil.com";
     public static final String testBaseUrl = "http://test-api.kylinoil.com";
     public static final String realBaseUrl = "http://api.kylinoil.com";
-    public static final String finalUrl = devBaseUrl;
+    public static final String finalUrl = realBaseUrl;
     //短信验证码 post
     public static final String getCodeUrl = finalUrl + "/message/code/send";
     //验证验证码 post

@@ -153,7 +153,7 @@
                                 android:paddingLeft="@dimen/common_margin"
                                 android:background="@null"
                                 android:inputType="numberDecimal"
-                                android:text="20.0"
+                                android:text="0"
                                 android:textSize="@dimen/text_common_item_title"
                                 />
                             <TextView

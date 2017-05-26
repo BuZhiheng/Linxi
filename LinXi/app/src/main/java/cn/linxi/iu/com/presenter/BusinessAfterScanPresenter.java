@@ -67,7 +67,7 @@ public class BusinessAfterScanPresenter implements IBusinessAfterScanPresenter {
             }
             @Override
             public void onNext(String s) {
-                view.showToast(s);
+//                view.showToast(s);
                 BaseResult result = GsonUtil.jsonToObject(s, BaseResult.class);
                 if (result.success()) {
                     json = GsonUtil.jsonToObject(result.getResult(),BusinessAfterScanJson.class);
@@ -179,7 +179,6 @@ public class BusinessAfterScanPresenter implements IBusinessAfterScanPresenter {
             this.goods = mac;
         }
     }
-
     public void order(){
         if (SystemUtils.networkState() == false){
             view.showToast(CommonCode.NOTICE_NETWORK_DISCONNECT);

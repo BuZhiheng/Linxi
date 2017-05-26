@@ -37,7 +37,7 @@
             android:text="收现金"
             android:textSize="@dimen/text_common_item_title"
             android:textColor="@color/color_white"
-            android:visibility="visible"
+            android:visibility="gone"
             />
     </FrameLayout>
     <LinearLayout
