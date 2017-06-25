@@ -68,11 +68,12 @@ public class BusinessAfterscanActivity extends AppCompatActivity implements IBus
             final ImageView imageView = (ImageView) view.findViewById(R.id.iv_business_afterscan_check);
             tvName.setText("油品型号："+mac.name);
             tvNum.setText(mac.num + "L");
+            final int finalI = i;
             frameLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     tvOiltype.setText(mac.name);
-                    initOilModelList();
+                    initOilModelList(finalI);
                     presenter.setOilCheck(imageView, mac, new BusinessAfterScanPresenter.OnGoodsCheckListener() {
                         @Override
                         public void onClick(int drawable, String tag) {
@@ -85,12 +86,15 @@ public class BusinessAfterscanActivity extends AppCompatActivity implements IBus
             llOil.addView(view);
         }
     }
-    private void initOilModelList() {
+    private void initOilModelList(int index) {
         int count = llOil.getChildCount();
         for (int i = 0; i < count; i++) {
             View view = llOil.getChildAt(i);
             ImageView imageView = (ImageView) view.findViewById(R.id.iv_business_afterscan_check);
             imageView.setImageResource(R.drawable.ic_station_check);
+            if (i != index){
+                imageView.setTag("0");
+            }
         }
     }
     @Override

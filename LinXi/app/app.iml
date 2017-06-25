@@ -118,7 +118,7 @@
     <orderEntry type="library" exported="" scope="TEST" name="multidex-instrumentation-1.0.1" level="project" />
     <orderEntry type="library" exported="" name="bugly_1.3.0_imsdk_release" level="project" />
     <orderEntry type="library" exported="" name="gson-2.4" level="project" />
-    <orderEntry type="library" exported="" name="analytics-6.1.0" level="project" />
+    <orderEntry type="library" exported="" name="analytics-6.1.1" level="project" />
     <orderEntry type="library" exported="" name="tls_sdk" level="project" />
     <orderEntry type="library" exported="" name="rxjava-1.1.3" level="project" />
     <orderEntry type="library" exported="" name="rxandroid-1.1.0" level="project" />

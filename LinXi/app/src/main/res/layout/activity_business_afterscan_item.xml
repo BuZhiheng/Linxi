@@ -23,9 +23,9 @@
             android:textSize="@dimen/text_common_item_title"
             />
         <LinearLayout
-            android:layout_width="0dp"
-            android:layout_weight="1"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_marginRight="@dimen/common_margin_large"
             android:orientation="vertical"
             android:gravity="center"
             >

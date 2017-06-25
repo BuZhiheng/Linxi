@@ -27,4 +27,7 @@ public interface IOrderView {
     void showNotBindPayPsd();
 
     void payOrderSuccess();
+
+    void setAliGone();
+    void setAliShow();
 }

@@ -70,6 +70,7 @@ public class OrderPresenter implements IOrderPresenter {
                 if (result.success()) {
                     order = GsonUtil.jsonToObject(result.getResult(), Order.class);
                     if ("normal".equals(order.source)){
+//                        order.balance_use = "10";
                         view.showBalance(order);
                     }
                     amount = Float.parseFloat(order.total_amount);
@@ -252,11 +253,15 @@ public class OrderPresenter implements IOrderPresenter {
             ivCheckBalance.setTag("1");
             amount = amount - Float.parseFloat(order.balance_use);
             setFinalTotal();
+            if (amount <= 0){
+                view.setAliGone();
+            }
         } else {
             view.setBalancePay(R.drawable.ic_station_check);
             ivCheckBalance.setTag("0");
             amount = amount + Float.parseFloat(order.balance_use);
             setFinalTotal();
+            view.setAliShow();
         }
     }
     @Override

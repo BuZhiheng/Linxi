@@ -66,6 +66,8 @@ public class OrderActivity extends AppCompatActivity implements IOrderView, View
     ImageView ivCheckZFB;
     @Bind(R.id.iv_orderpy_checkwx)
     ImageView ivCheckWx;
+    @Bind(R.id.ll_order_pay_type)
+    LinearLayout llPayType;
     private PayPsdDialog payPsdDialog;
     private Dialog dialog;
     private Map<String,String> result;
@@ -134,6 +136,14 @@ public class OrderActivity extends AppCompatActivity implements IOrderView, View
     public void payOrderSuccess() {
         showToast("支付成功");
         finish();
+    }
+    @Override
+    public void setAliGone() {
+        llPayType.setVisibility(View.GONE);
+    }
+    @Override
+    public void setAliShow() {
+        llPayType.setVisibility(View.VISIBLE);
     }
     @Override
     public void showNotBindPhone() {

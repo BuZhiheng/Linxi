@@ -147,79 +147,86 @@
                         />
                 </FrameLayout>
             </LinearLayout>
-            <TextView
+            <LinearLayout
+                android:id="@+id/ll_order_pay_type"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/common_title_height39"
-                android:background="@color/color_bg"
-                android:paddingLeft="@dimen/common_margin"
-                android:gravity="center_vertical"
-                android:text="付款方式"
-                android:textSize="@dimen/text_common_item_title"
-                android:textColor="@color/color_gray_deep"
-                />
-            <FrameLayout
-                android:id="@+id/fl_order_pay_zfb"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/common_title_height39"
-                android:onClick="onClick"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
                 >
-                <ImageView
-                    android:layout_gravity="center_vertical"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginLeft="@dimen/common_margin"
-                    android:src="@drawable/ic_pay_zfb"
-                    />
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="49dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/common_title_height39"
+                    android:background="@color/color_bg"
+                    android:paddingLeft="@dimen/common_margin"
                     android:gravity="center_vertical"
-                    android:text="支付宝"
+                    android:text="付款方式"
                     android:textSize="@dimen/text_common_item_title"
-                    android:textColor="@color/color_black_text"
+                    android:textColor="@color/color_gray_deep"
                     />
-                <ImageView
-                    android:id="@+id/iv_orderpy_checkzfb"
-                    android:layout_gravity="center_vertical|right"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginRight="@dimen/common_margin"
-                    android:src="@drawable/ic_station_checked"
-                    />
-            </FrameLayout>
-            <include layout="@layout/include_div_match_margin10"/>
-            <FrameLayout
-                android:id="@+id/fl_order_pay_wx"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/common_title_height39"
-                android:onClick="onClick"
-                >
-                <ImageView
-                    android:layout_gravity="center_vertical"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginLeft="@dimen/common_margin"
-                    android:src="@drawable/ic_pay_wx"
-                    />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="49dp"
-                    android:gravity="center_vertical"
-                    android:text="微    信"
-                    android:textSize="@dimen/text_common_item_title"
-                    android:textColor="@color/color_black_text"
-                    />
-                <ImageView
-                    android:id="@+id/iv_orderpy_checkwx"
-                    android:layout_gravity="center_vertical|right"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginRight="@dimen/common_margin"
-                    android:src="@drawable/ic_station_check"
-                    />
-            </FrameLayout>
+                <FrameLayout
+                    android:id="@+id/fl_order_pay_zfb"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/common_title_height39"
+                    android:onClick="onClick"
+                    >
+                    <ImageView
+                        android:layout_gravity="center_vertical"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_marginLeft="@dimen/common_margin"
+                        android:src="@drawable/ic_pay_zfb"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="49dp"
+                        android:gravity="center_vertical"
+                        android:text="支付宝"
+                        android:textSize="@dimen/text_common_item_title"
+                        android:textColor="@color/color_black_text"
+                        />
+                    <ImageView
+                        android:id="@+id/iv_orderpy_checkzfb"
+                        android:layout_gravity="center_vertical|right"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginRight="@dimen/common_margin"
+                        android:src="@drawable/ic_station_checked"
+                        />
+                </FrameLayout>
+                <include layout="@layout/include_div_match_margin10"/>
+                <FrameLayout
+                    android:id="@+id/fl_order_pay_wx"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/common_title_height39"
+                    android:onClick="onClick"
+                    >
+                    <ImageView
+                        android:layout_gravity="center_vertical"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_marginLeft="@dimen/common_margin"
+                        android:src="@drawable/ic_pay_wx"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="49dp"
+                        android:gravity="center_vertical"
+                        android:text="微    信"
+                        android:textSize="@dimen/text_common_item_title"
+                        android:textColor="@color/color_black_text"
+                        />
+                    <ImageView
+                        android:id="@+id/iv_orderpy_checkwx"
+                        android:layout_gravity="center_vertical|right"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginRight="@dimen/common_margin"
+                        android:src="@drawable/ic_station_check"
+                        />
+                </FrameLayout>
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
     <LinearLayout
